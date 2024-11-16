@@ -1,9 +1,16 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { fetchCards } from "../services/api";
+import { Card } from "./Card";
+import { getRandomCards } from "../../utils/arrayMethods";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
+
+// let cardData;
+// async function getCards() {
+//   cardData = await fetchCards(apiUrl, apiToken);
+// }
 
 export function Game() {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -19,7 +26,8 @@ export function Game() {
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(null);
+  const [cardsFlipped, setCardsFlipped] = useState(false);
 
   // Latest bestScore gets saved in localStorage every time it changes
   useEffect(() => {
@@ -28,8 +36,19 @@ export function Game() {
 
   // useEffect to fetch from the API
   useEffect(() => {
-    setCards(fetchCards(apiUrl, apiToken))
-  }, [selectedCards]);
+    async function getCards() {
+      await fetchCards(apiUrl, apiToken).then(
+        (allCards) => setCards(getRandomCards(allCards))
+        // console.log(getRandomCards(allCards))
+      );
+      // .then((fetchedCards) => {
+      //   setCards(fetchedCards);
+      //   console.log(cards);
+      // });
+    }
+
+    getCards();
+  }, []);
 
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
@@ -47,5 +66,20 @@ export function Game() {
     }
   }
 
-  
+  return (
+    <>
+      {cards && (
+        <div className="cards">
+          {cards.map((card) => (
+            <Card
+              key={card.id}
+              card={card}
+              handleCardClick={handleCardClick}
+              cardsFlipped={cardsFlipped}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
 }

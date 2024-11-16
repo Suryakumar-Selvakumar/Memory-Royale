@@ -12,16 +12,14 @@ async function fetchCards(apiUrl, apiToken) {
   const cards = cardsData.items;
 
   if (cards && response.status !== 400) {
-    return getRandomCards(
-      cards.map((cardObj) => {
-        return {
-          id: cardObj.id,
-          name: cardObj.name,
-          rarity: cardObj.rarity,
-          iconUrl: cardObj.iconUrls.medium,
-        };
-      })
-    );
+    return cards.map((cardObj) => {
+      return {
+        id: cardObj.id,
+        name: cardObj.name,
+        rarity: cardObj.rarity,
+        iconUrl: cardObj.iconUrls.medium,
+      };
+    });
   }
 }
 
