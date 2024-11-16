@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import sampleSize from "lodash.samplesize";
 import { fetchCards } from "../services/api";
 
 const apiToken = import.meta.env.VITE_API_KEY;
+const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 
 export function Game() {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -18,32 +18,18 @@ export function Game() {
   const [gameOver, setGameOver] = useState(false);
 
   //Card states
-  const [deck, setDeck] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
-  const [currentCards, setCurrentCards] = useState([]);
+  const [cards, setCards] = useState([]);
 
   // Latest bestScore gets saved in localStorage every time it changes
   useEffect(() => {
     localStorage.setItem("best-score", JSON.stringify(bestScore));
   }, [bestScore]);
 
-  const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
-
-  // Make the fetch request
-  // console.log(fetchCards(apiUrl, apiToken));
-
   // useEffect to fetch from the API
-  // useEffect(() => {
-  //   const baseUrl = "https://api.clashroyale.com/v1/cards";
-  //   const data = fetch(baseUrl, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${API_KEY}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     mode: "no-cors",
-  //   });
-  // }, [selectedCards]);
+  useEffect(() => {
+    setCards(fetchCards(apiUrl, apiToken))
+  }, [selectedCards]);
 
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
@@ -59,10 +45,5 @@ export function Game() {
         setBestScore(score);
       }
     }
-  }
-
-  // Function to get random cards from the deck
-  function getRandomCards(deck) {
-    return sampleSize(deck, 12);
   }
 }
