@@ -9,6 +9,8 @@ export function Card({ card, handleCardClick, cardsFlipped }) {
     // epic card styles
   } else if (card.rarity === "legendary") {
     // legendary card styles
+  } else {
+    // champion styles
   }
 
   const iconUrl = new URL(card.iconUrl);
@@ -17,11 +19,13 @@ export function Card({ card, handleCardClick, cardsFlipped }) {
     <div className={cardsFlipped ? "card flipped" : "card"} key={card.id}>
       <div
         className="card-front"
-        style={{ background: `url(${iconUrl})` }}
+        style={{
+          background: `url(${iconUrl})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+        }}
         onClick={() => handleCardClick(card.id)}
-      >
-        {card.name}
-      </div>
+      ></div>
       <div className="card-back">{/* Add Big Question mark */}</div>
     </div>
   );

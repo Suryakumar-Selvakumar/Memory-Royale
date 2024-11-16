@@ -15,7 +15,6 @@ async function fetchCards(apiUrl, apiToken) {
     return cards.map((cardObj) => {
       return {
         id: cardObj.id,
-        name: cardObj.name,
         rarity: cardObj.rarity,
         iconUrl: cardObj.iconUrls.medium,
       };

@@ -7,10 +7,7 @@ import { getRandomCards } from "../../utils/arrayMethods";
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 
-// let cardData;
-// async function getCards() {
-//   cardData = await fetchCards(apiUrl, apiToken);
-// }
+const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
 export function Game() {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -36,18 +33,10 @@ export function Game() {
 
   // useEffect to fetch from the API
   useEffect(() => {
-    async function getCards() {
-      await fetchCards(apiUrl, apiToken).then(
-        (allCards) => setCards(getRandomCards(allCards))
-        // console.log(getRandomCards(allCards))
-      );
-      // .then((fetchedCards) => {
-      //   setCards(fetchedCards);
-      //   console.log(cards);
-      // });
-    }
-
-    getCards();
+    (async () => {
+      const cardsArray = await allCards;
+      setCards(getRandomCards(cardsArray));
+    })();
   }, []);
 
   // Function to run when the user clicks on the card
