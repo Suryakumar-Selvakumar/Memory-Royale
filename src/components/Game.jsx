@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { fetchCards } from "../services/api";
 import { Card } from "./Card";
-import { getRandomCards } from "../../utils/arrayMethods";
+import { getRandomCards } from "../utils/arrayMethods";
+import "../styles/Game.css";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -39,6 +40,21 @@ export function Game() {
     })();
   }, []);
 
+  // useEffect to update cards at the end of a round
+  useEffect(() => {
+    (async () => {
+      const cardsArray = await allCards;
+      setCards(getRandomCards(cardsArray));
+    })();
+  }, [selectedCards]);
+
+  // useEffect to update bestScore if new bestScore is obtained
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score, bestScore]);
+
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
     if (selectedCards.includes(cardId)) {
@@ -46,17 +62,12 @@ export function Game() {
     } else {
       setSelectedCards([...selectedCards, cardId]);
       setScore((s) => s + 1);
-
-      // See if this works, if it updates one lesser than score instead
-      // of with score, then make sure to add this logic to a useEffect instead
-      if (score > bestScore) {
-        setBestScore(score);
-      }
     }
   }
 
   return (
-    <>
+    <div className="game-page">
+      <div className="king-div">{gameOver ? "Game Over" : "Round Won"}</div>
       {cards && (
         <div className="cards">
           {cards.map((card) => (
@@ -69,6 +80,10 @@ export function Game() {
           ))}
         </div>
       )}
-    </>
+      <div className="score-board-div">
+        <p>{score}</p>
+        <p>{bestScore}</p>
+      </div>
+    </div>
   );
 }

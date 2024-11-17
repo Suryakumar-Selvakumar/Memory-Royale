@@ -1,4 +1,4 @@
-import { getRandomCards } from "../../utils/arrayMethods";
+import { getRandomCards } from "../utils/arrayMethods";
 
 async function fetchCards(apiUrl, apiToken) {
   const response = await fetch(apiUrl, {

@@ -1,0 +1,23 @@
+.game-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+  font-family: myFontRegular;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 40vw;
+  height: max-content;
+  place-items: center;
+}
+
+.king-div {
+  font-size: 3rem;
+}
+
+.score-board-div {
+  font-size: 3rem;
+  place-self: start end;
+}
