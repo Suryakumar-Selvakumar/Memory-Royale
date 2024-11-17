@@ -26,6 +26,7 @@ export function Game() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [cards, setCards] = useState(null);
   const [cardsFlipped, setCardsFlipped] = useState(false);
+  const [showCard, setShowCard] = useState(false);
 
   // Latest bestScore gets saved in localStorage every time it changes
   useEffect(() => {
@@ -42,10 +43,16 @@ export function Game() {
 
   // useEffect to update cards at the end of a round
   useEffect(() => {
-    (async () => {
-      const cardsArray = await allCards;
-      setCards(getRandomCards(cardsArray));
-    })();
+    setTimeout(() => {
+      (async () => {
+        const cardsArray = await allCards;
+        setCards(getRandomCards(cardsArray));
+        setShowCard(true);
+      })();
+    }, 500);
+    setTimeout(() => {
+      setCardsFlipped(false);
+    }, 750);
   }, [selectedCards]);
 
   // useEffect to update bestScore if new bestScore is obtained
@@ -62,6 +69,8 @@ export function Game() {
     } else {
       setSelectedCards([...selectedCards, cardId]);
       setScore((s) => s + 1);
+      setCardsFlipped(true);
+      setShowCard(false);
     }
   }
 
@@ -76,6 +85,7 @@ export function Game() {
               card={card}
               handleCardClick={handleCardClick}
               cardsFlipped={cardsFlipped}
+              showCard={showCard}
             />
           ))}
         </div>

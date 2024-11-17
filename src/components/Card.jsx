@@ -1,6 +1,6 @@
 import "../styles/Card.css";
 
-export function Card({ card, handleCardClick, cardsFlipped }) {
+export function Card({ card, handleCardClick, cardsFlipped, showCard }) {
   let cardShadow;
   if (card.rarity && card.rarity === "common") {
     //common card styles
@@ -20,13 +20,22 @@ export function Card({ card, handleCardClick, cardsFlipped }) {
       <img
         className="card-front"
         style={{
-          boxShadow: cardShadow,
+          // boxShadow: showCard ? cardShadow : "none",
+          boxShadow: showCard ? cardShadow : setTimeout(() => "none", 250),
         }}
         onClick={() => handleCardClick(card.id)}
         src={card.iconUrl}
         alt={card.name}
       />
-      <div className="card-back">{/* Add Big Question mark */}?</div>
+      <div
+        className="card-back"
+        style={{
+          boxShadow: "inset 0 0 30px grey, 0 0 15px grey",
+          border: "5px solid black",
+        }}
+      >
+        ?
+      </div>
     </div>
   );
 }
