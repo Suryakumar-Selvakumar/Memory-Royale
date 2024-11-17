@@ -11,6 +11,7 @@
   width: 40vw;
   height: max-content;
   place-items: center;
+  row-gap: 4rem;
 }
 
 .king-div {

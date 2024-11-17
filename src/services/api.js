@@ -12,13 +12,17 @@ async function fetchCards(apiUrl, apiToken) {
   const cards = cardsData.items;
 
   if (cards && response.status !== 400) {
-    return cards.map((cardObj) => {
-      return {
-        id: cardObj.id,
-        rarity: cardObj.rarity,
-        iconUrl: cardObj.iconUrls.medium,
-      };
-    });
+    return cards
+      .filter(
+        (card) => card.rarity !== "legendary" && card.rarity !== "champion"
+      )
+      .map((cardObj) => {
+        return {
+          id: cardObj.id,
+          rarity: cardObj.rarity,
+          iconUrl: cardObj.iconUrls.medium,
+        };
+      });
   }
 }
 

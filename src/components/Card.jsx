@@ -1,16 +1,16 @@
 import "../styles/Card.css";
 
 export function Card({ card, handleCardClick, cardsFlipped }) {
-  if (card.rarity === "common") {
+  let cardShadow;
+  if (card.rarity && card.rarity === "common") {
     //common card styles
-  } else if (card.rarity === "rare") {
+    cardShadow = "inset 0 0 5px grey";
+  } else if (card.rarity && card.rarity === "rare") {
     // rare card styles
-  } else if (card.rarity === "epic") {
+    cardShadow = "inset 0 0 5px orange";
+  } else if (card.rarity && card.rarity === "epic") {
     // epic card styles
-  } else if (card.rarity === "legendary") {
-    // legendary card styles
-  } else {
-    // champion styles
+    cardShadow = "inset 0 0 5px magenta";
   }
 
   const iconUrl = new URL(card.iconUrl);
@@ -21,12 +21,14 @@ export function Card({ card, handleCardClick, cardsFlipped }) {
         className="card-front"
         style={{
           background: `url(${iconUrl})`,
-          backgroundSize: "contain",
+          backgroundSize: "150px 215px",
           backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          boxShadow: cardShadow,
         }}
         onClick={() => handleCardClick(card.id)}
       ></div>
-      <div className="card-back">{/* Add Big Question mark */}</div>
+      <div className="card-back">{/* Add Big Question mark */}?</div>
     </div>
   );
 }
