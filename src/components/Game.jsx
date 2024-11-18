@@ -43,15 +43,18 @@ export function Game() {
   // useEffect to fetch from the API
   useEffect(() => {
     setShowKingEmote(true);
+
     (async () => {
       const cardsArray = await allCards;
       setCards(getRandomCards(cardsArray));
     })();
 
+    console.log(1);
+
     setTimeout(() => {
       setShowKingEmote(false);
       setGameStartState(false);
-    }, 2000);
+    }, 4500);
   }, []);
 
   // useEffect to update cards at the end of a round
@@ -68,9 +71,9 @@ export function Game() {
     }, 750);
 
     setTimeout(() => {
-      setShowKingEmote(false);
+      if (!gameStartState) setShowKingEmote(false);
     }, 1000);
-  }, [selectedCards]);
+  }, [selectedCards, gameStartState]);
 
   // useEffect to update bestScore if new bestScore is obtained
   useEffect(() => {
@@ -88,8 +91,10 @@ export function Game() {
       setScore(0);
 
       setTimeout(() => {
+        // Game Reset Logic, probably port it to Restart modal when you make it
         setShowKingEmote(false);
         setGameOver(false);
+        setSelectedCards([]);
       }, 1000);
     } else {
       setSelectedCards([...selectedCards, cardId]);
@@ -111,7 +116,7 @@ export function Game() {
       </div>
       {cards && (
         <div className="cards" ref={cardsDiv}>
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <Card
               key={card.id}
               card={card}
@@ -119,6 +124,7 @@ export function Game() {
               cardsFlipped={cardsFlipped}
               showCard={showCard}
               gameStartState={gameStartState}
+              dataId={index}
             />
           ))}
         </div>

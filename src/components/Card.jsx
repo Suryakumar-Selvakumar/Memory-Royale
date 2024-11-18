@@ -6,6 +6,7 @@ export function Card({
   cardsFlipped,
   showCard,
   gameStartState,
+  dataId,
 }) {
   let cardShadow;
   if (card.rarity && card.rarity === "common") {
@@ -23,6 +24,7 @@ export function Card({
 
   return (
     <div
+      data-id={dataId + 1}
       className={
         cardsFlipped
           ? "card flipped"

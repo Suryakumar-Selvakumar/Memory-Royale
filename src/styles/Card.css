@@ -6,6 +6,9 @@
   border-radius: 5px;
   transform-style: preserve-3d;
   transition: all 500ms ease;
+  position: relative;
+  --base-delay: 200ms;
+  --base-column-offset: -300px;
 }
 
 .card.flipped {
@@ -46,6 +49,96 @@
   transition: all 500ms ease;
 }
 
+.card:nth-child(n + 1):nth-child(-n + 4) {
+  --row-height-offset: 225px;
+}
+
+.card:nth-child(n + 5):nth-child(-n + 8) {
+  --row-height-offset: 0px;
+}
+
+.card:nth-child(n + 9):nth-child(-n + 12) {
+  --row-height-offset: -225px;
+}
+
+.card:nth-child(1),
+.card:nth-child(5),
+.card:nth-child(9) {
+  --column-width-offset: var(--base-column-offset);
+}
+
+.card:nth-child(2),
+.card:nth-child(6),
+.card:nth-child(10) {
+  --column-width-offset: calc(var(--base-column-offset) * 2);
+}
+
+.card:nth-child(3),
+.card:nth-child(7),
+.card:nth-child(11) {
+  --column-width-offset: calc(var(--base-column-offset) * 3);
+}
+
+.card:nth-child(4),
+.card:nth-child(8),
+.card:nth-child(12) {
+  --column-width-offset: calc(var(--base-column-offset) * 4);
+}
+
+.card:nth-child(1).first-draw {
+  --animation-delay: var(--base-delay);
+}
+.card:nth-child(2).first-draw {
+  --animation-delay: calc(var(--base-delay) * 2);
+}
+.card:nth-child(3).first-draw {
+  --animation-delay: calc(var(--base-delay) * 3);
+}
+.card:nth-child(4).first-draw {
+  --animation-delay: calc(var(--base-delay) * 4);
+}
+.card:nth-child(5).first-draw {
+  --animation-delay: calc(var(--base-delay) * 5);
+}
+.card:nth-child(6).first-draw {
+  --animation-delay: calc(var(--base-delay) * 6);
+}
+.card:nth-child(7).first-draw {
+  --animation-delay: calc(var(--base-delay) * 7);
+}
+.card:nth-child(8).first-draw {
+  --animation-delay: calc(var(--base-delay) * 8);
+}
+.card:nth-child(9).first-draw {
+  --animation-delay: calc(var(--base-delay) * 9);
+}
+.card:nth-child(10).first-draw {
+  --animation-delay: calc(var(--base-delay) * 10);
+}
+.card:nth-child(11).first-draw {
+  --animation-delay: calc(var(--base-delay) * 11);
+}
+.card:nth-child(12).first-draw {
+  --animation-delay: calc(var(--base-delay) * 12);
+}
+
 .card.first-draw {
-  animation: cards-place 500ms linear;
+  animation: place-cards 300ms ease-out;
+  animation-delay: var(--animation-delay);
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+}
+
+@keyframes place-cards {
+  0% {
+    transform: scale3d(0, 0, 0) rotateY(180deg);
+    top: var(--row-height-offset);
+    left: var(--column-width-offset);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1) rotateY(180deg);
+    top: 0px;
+    left: 0;
+  }
 }
