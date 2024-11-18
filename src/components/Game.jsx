@@ -78,6 +78,7 @@ export function Game() {
       setBestScore(score);
     }
   }, [score, bestScore]);
+
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
     setShowKingEmote(true);
@@ -85,6 +86,11 @@ export function Game() {
     if (selectedCards.includes(cardId)) {
       setGameOver(true);
       setScore(0);
+
+      setTimeout(() => {
+        setShowKingEmote(false);
+        setGameOver(false);
+      }, 1000);
     } else {
       setSelectedCards([...selectedCards, cardId]);
       setScore((s) => s + 1);
@@ -97,7 +103,7 @@ export function Game() {
     <div className="game-page">
       <div className="king-div">
         <img
-          src={setKingEmote(score, gameOver, gameStartState)}
+          src={setKingEmote(score, bestScore, gameOver, gameStartState)}
           alt="King's emote"
           className={showKingEmote ? "king-emote visible" : "king-emote"}
         />
