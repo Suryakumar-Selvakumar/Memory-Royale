@@ -19,13 +19,13 @@ export function setKingEmote(score, bestScore, gameOver, gameStartState) {
         imgSrc = kingVictory;
       } else if (score == 10) {
         imgSrc = kingTenPoints;
-      } else if (score == 20) {
+      } else if (score == 15) {
         imgSrc = kingPixelLaugh;
-      } else if (score == 30) {
+      } else if (score == 20) {
         imgSrc = kingPirate;
-      } else if (score == 40) {
+      } else if (score == 25) {
         imgSrc = kingEmperor;
-      } else if (score == 50) {
+      } else if (score == 30) {
         imgSrc = kingHappy;
       } else {
         imgSrc = kingThumbsUp;

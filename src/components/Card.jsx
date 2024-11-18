@@ -12,15 +12,15 @@ export function Card({
   if (card.rarity && card.rarity === "common") {
     //common card styles
     cardShadow =
-      "inset 0 -1.5rem 3rem grey, inset 0 0.5rem 1rem grey, 0 0 15px grey";
+      "inset 0 -1.5rem 3.5rem grey, inset 0 0.5rem 1rem grey, 0 0 15px grey";
   } else if (card.rarity && card.rarity === "rare") {
     // rare card styles
     cardShadow =
-      "inset 0 -1.5rem 3rem orange, inset 0 0.5rem 1rem orange, 0 0 15px orange";
+      "inset 0 -1.5rem 3.5rem rgb(241, 157, 0), inset 0 0.5rem 1rem rgb(241, 157, 0), 0 0 15px rgb(241, 157, 0)";
   } else if (card.rarity && card.rarity === "epic") {
     // epic card styles
     cardShadow =
-      "inset 0 -1.5rem 3rem magenta, inset 0 0.5rem 1rem magenta, 0 0 15px magenta";
+      "inset 0 -1.5rem 3.5rem magenta, inset 0 0.5rem 1rem magenta, 0 0 15px magenta";
   }
 
   const iconUrl = new URL(card.iconUrl);

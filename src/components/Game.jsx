@@ -49,8 +49,6 @@ export function Game() {
       setCards(getRandomCards(cardsArray));
     })();
 
-    console.log(1);
-
     setTimeout(() => {
       setShowKingEmote(false);
       setGameStartState(false);
@@ -91,10 +89,21 @@ export function Game() {
       setScore(0);
 
       setTimeout(() => {
-        // Game Reset Logic, probably port it to Restart modal when you make it
+        // Game Reset Logic, probably port it to Restart modal if you make it
         setShowKingEmote(false);
         setGameOver(false);
         setSelectedCards([]);
+        setCardsFlipped(true);
+
+        setTimeout(() => {
+          setGameStartState(true);
+          setShowKingEmote(true);
+        }, 750);
+
+        setTimeout(() => {
+          setShowKingEmote(false);
+          setGameStartState(false);
+        }, 4500);
       }, 1000);
     } else {
       setSelectedCards([...selectedCards, cardId]);
