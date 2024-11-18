@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { fetchCards } from "../services/api";
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
+import king from "../assets/King.png";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -27,6 +28,10 @@ export function Game() {
   const [cards, setCards] = useState(null);
   const [cardsFlipped, setCardsFlipped] = useState(false);
   const [showCard, setShowCard] = useState(false);
+  const [gameStartState, setGameStartState] = useState(true);
+
+  // DOM Refs
+  const cardsDiv = useRef(null);
 
   // Latest bestScore gets saved in localStorage every time it changes
   useEffect(() => {
@@ -39,6 +44,10 @@ export function Game() {
       const cardsArray = await allCards;
       setCards(getRandomCards(cardsArray));
     })();
+
+    setTimeout(() => {
+      setGameStartState(false);
+    }, 500);
   }, []);
 
   // useEffect to update cards at the end of a round
@@ -61,11 +70,11 @@ export function Game() {
       setBestScore(score);
     }
   }, [score, bestScore]);
-
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
     if (selectedCards.includes(cardId)) {
       setGameOver(true);
+      setScore(0);
     } else {
       setSelectedCards([...selectedCards, cardId]);
       setScore((s) => s + 1);
@@ -78,7 +87,7 @@ export function Game() {
     <div className="game-page">
       <div className="king-div">{gameOver ? "Game Over" : "Round Won"}</div>
       {cards && (
-        <div className="cards">
+        <div className="cards" ref={cardsDiv}>
           {cards.map((card) => (
             <Card
               key={card.id}
@@ -86,13 +95,14 @@ export function Game() {
               handleCardClick={handleCardClick}
               cardsFlipped={cardsFlipped}
               showCard={showCard}
+              gameStartState={gameStartState}
             />
           ))}
         </div>
       )}
       <div className="score-board-div">
-        <p>{score}</p>
-        <p>{bestScore}</p>
+        <p>Best Score: {bestScore}</p>
+        <p>Score: {score}</p>
       </div>
     </div>
   );
