@@ -5,6 +5,7 @@ import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/King.png";
+import { setKingEmote } from "../utils/kingImageSetter";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -22,6 +23,7 @@ export function Game() {
 
   // Game states
   const [gameOver, setGameOver] = useState(false);
+  const [showKingEmote, setShowKingEmote] = useState(false);
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -40,14 +42,16 @@ export function Game() {
 
   // useEffect to fetch from the API
   useEffect(() => {
+    setShowKingEmote(true);
     (async () => {
       const cardsArray = await allCards;
       setCards(getRandomCards(cardsArray));
     })();
 
     setTimeout(() => {
+      setShowKingEmote(false);
       setGameStartState(false);
-    }, 500);
+    }, 2000);
   }, []);
 
   // useEffect to update cards at the end of a round
@@ -62,6 +66,10 @@ export function Game() {
     setTimeout(() => {
       setCardsFlipped(false);
     }, 750);
+
+    setTimeout(() => {
+      setShowKingEmote(false);
+    }, 1000);
   }, [selectedCards]);
 
   // useEffect to update bestScore if new bestScore is obtained
@@ -72,6 +80,8 @@ export function Game() {
   }, [score, bestScore]);
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
+    setShowKingEmote(true);
+
     if (selectedCards.includes(cardId)) {
       setGameOver(true);
       setScore(0);
@@ -85,7 +95,14 @@ export function Game() {
 
   return (
     <div className="game-page">
-      <div className="king-div">{gameOver ? "Game Over" : "Round Won"}</div>
+      <div className="king-div">
+        <img
+          src={setKingEmote(score, gameOver, gameStartState)}
+          alt="King's emote"
+          className={showKingEmote ? "king-emote visible" : "king-emote"}
+        />
+        <img src={king} id="king" alt="Clash Royale King" />
+      </div>
       {cards && (
         <div className="cards" ref={cardsDiv}>
           {cards.map((card) => (

@@ -18,6 +18,28 @@
 .king-div {
   font-size: 3rem;
   padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  gap: 4rem;
+}
+
+#king {
+  width: 400px;
+  height: 500px;
+}
+
+.king-emote {
+  width: 200px;
+  position: relative;
+  opacity: 0;
+}
+
+.king-emote.visible {
+  transform-origin: bottom;
+  animation: emote-pop-up 500ms ease;
+  opacity: 1;
 }
 
 .score-board-div {
@@ -27,4 +49,16 @@
   flex-direction: column;
   align-items: end;
   padding-top: 1rem;
+}
+
+@keyframes emote-pop-up {
+  0% {
+    transform: scale3d(0, 0, 0);
+    top: 225px;
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1) translateY(0px);
+    top: 0px;
+  }
 }
