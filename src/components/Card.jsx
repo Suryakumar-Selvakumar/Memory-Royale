@@ -11,13 +11,16 @@ export function Card({
   let cardShadow;
   if (card.rarity && card.rarity === "common") {
     //common card styles
-    cardShadow = "inset 0 0 30px grey, 0 0 15px grey";
+    cardShadow =
+      "inset 0 -1.5rem 3rem grey, inset 0 0.5rem 1rem grey, 0 0 15px grey";
   } else if (card.rarity && card.rarity === "rare") {
     // rare card styles
-    cardShadow = "inset 0 0 30px orange, 0 0 15px orange";
+    cardShadow =
+      "inset 0 -1.5rem 3rem orange, inset 0 0.5rem 1rem orange, 0 0 15px orange";
   } else if (card.rarity && card.rarity === "epic") {
     // epic card styles
-    cardShadow = "inset 0 0 30px magenta, 0 0 15px magenta";
+    cardShadow =
+      "inset 0 -1.5rem 3rem magenta, inset 0 0.5rem 1rem magenta, 0 0 15px magenta";
   }
 
   const iconUrl = new URL(card.iconUrl);
@@ -34,16 +37,27 @@ export function Card({
       }
       key={card.id}
     >
-      <img
+      <div
         className="card-front"
         style={{
           boxShadow: showCard ? cardShadow : setTimeout(() => "none", 250),
         }}
         onClick={() => handleCardClick(card.id)}
-        src={card.iconUrl}
-        alt={card.name}
-      />
-      <div className="card-back">?</div>
+      >
+        <img id="card-image" src={card.iconUrl} alt={card.name} />
+        <span id="card-name">{card.name}</span>
+      </div>
+      <div
+        className={
+          cardsFlipped
+            ? "card-back flipped"
+            : gameStartState
+            ? "card-back first-draw"
+            : "card-back"
+        }
+      >
+        ?
+      </div>
     </div>
   );
 }
