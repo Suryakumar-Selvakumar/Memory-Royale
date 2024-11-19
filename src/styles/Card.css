@@ -9,9 +9,9 @@
   --base-column-offset: -275px;
   --base-row-offset: 350px;
   --card-width: 200px;
-  --card-height: 280px;
-  width: 150px;
-  height: 180px;
+  --card-height: 275px;
+  width: var(--card-width);
+  height: var(--card-height);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,7 +117,7 @@
 
 .card-front {
   height: var(--card-height);
-  width: calc(var(--card-width) + 5px);
+  width: var(--card-width);
   z-index: 2;
   position: relative;
   border-radius: 15px;
@@ -133,7 +133,7 @@
   object-fit: cover;
   object-position: 0 -37.5px;
   height: calc(var(--card-height) - 30px);
-  width: calc(var(--card-width) + 5px);
+  width: calc(var(--card-width));
 }
 
 #card-name {
@@ -150,15 +150,14 @@
 .card-back {
   z-index: 1;
   position: relative;
-  top: -280px;
-  left: 7.5px;
+  top: -275px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 7rem;
   line-height: 0.1;
   width: var(--card-width);
-  min-height: var(--card-height);
+  min-height: calc(var(--card-height));
   border-radius: 15px;
   background-color: white;
   backface-visibility: visible;
@@ -172,12 +171,12 @@
   box-shadow: inset 0 0 30px grey, 0 0 15px grey;
   border: 5px solid black;
   width: var(--card-width);
-  min-height: var(--card-height);
+  min-height: calc(var(--card-height));
 }
 
 .card-back.flipped {
   box-shadow: inset 0 0 30px grey, 0 0 15px grey;
   border: 5px solid black;
   width: var(--card-width);
-  min-height: var(--card-height);
+  min-height: calc(var(--card-height));
 }

@@ -13,15 +13,15 @@
   width: 40vw;
   height: max-content;
   place-items: center;
-  row-gap: 9rem;
-  column-gap: 4.5rem;
+  row-gap: 1.5rem;
+  column-gap: 3rem;
   padding-top: 5rem;
   margin: 0 auto;
 }
 
 .king-div {
   font-size: 3rem;
-  padding-top: 1rem;
+  padding-top: 7.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -53,6 +53,7 @@
   flex-direction: column;
   align-items: end;
   padding-top: 1rem;
+  color: white;
 }
 
 @keyframes emote-pop-up {

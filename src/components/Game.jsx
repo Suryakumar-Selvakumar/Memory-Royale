@@ -6,6 +6,9 @@ import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/King.png";
 import { setKingEmote } from "../utils/kingImageSetter";
+import purpleBackground from "../assets/Purple-Background.png";
+import colorfulBackground from "../assets/Colorful-Background.png";
+import kingBackground from "../assets/King-Background.png";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -93,16 +96,7 @@ export function Game() {
         setShowKingEmote(false);
         setGameOver(false);
         setSelectedCards([]);
-        // setCardsFlipped(true);
-
-        // setTimeout(() => {
-        //   // Logic to make the cards fade away
-        //   setNewGameStart(true);
-        // }, 750);
-
-        // setTimeout(() => {
-        //   setCardsFlipped(false);
-        // }, 1250);
+        setCardsFlipped(true);
 
         setTimeout(() => {
           setGameStartState(true);
@@ -123,7 +117,13 @@ export function Game() {
   }
 
   return (
-    <div className="game-page">
+    <div
+      className="game-page"
+      style={{
+        background: `url(${colorfulBackground}) no-repeat`,
+        backgroundSize: "cover",
+      }}
+    >
       <div className="king-div">
         <img
           src={setKingEmote(score, bestScore, gameOver, gameStartState)}
@@ -134,7 +134,7 @@ export function Game() {
       </div>
       {cards && (
         <div className="cards" ref={cardsDiv}>
-          {cards.map((card, index) => (
+          {cards.map((card) => (
             <Card
               key={card.id}
               card={card}
