@@ -24,13 +24,13 @@ export function Game() {
   // Game states
   const [gameOver, setGameOver] = useState(false);
   const [showKingEmote, setShowKingEmote] = useState(false);
+  const [gameStartState, setGameStartState] = useState(true);
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
   const [cards, setCards] = useState(null);
   const [cardsFlipped, setCardsFlipped] = useState(false);
   const [showCard, setShowCard] = useState(false);
-  const [gameStartState, setGameStartState] = useState(true);
 
   // DOM Refs
   const cardsDiv = useRef(null);
@@ -93,7 +93,16 @@ export function Game() {
         setShowKingEmote(false);
         setGameOver(false);
         setSelectedCards([]);
-        setCardsFlipped(true);
+        // setCardsFlipped(true);
+
+        // setTimeout(() => {
+        //   // Logic to make the cards fade away
+        //   setNewGameStart(true);
+        // }, 750);
+
+        // setTimeout(() => {
+        //   setCardsFlipped(false);
+        // }, 1250);
 
         setTimeout(() => {
           setGameStartState(true);
@@ -133,7 +142,7 @@ export function Game() {
               cardsFlipped={cardsFlipped}
               showCard={showCard}
               gameStartState={gameStartState}
-              dataId={index}
+              gameOver={gameOver}
             />
           ))}
         </div>
