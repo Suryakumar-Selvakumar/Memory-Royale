@@ -6,9 +6,8 @@ import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/King.png";
 import { setKingEmote } from "../utils/kingImageSetter";
-import purpleBackground from "../assets/Purple-Background.png";
-import colorfulBackground from "../assets/Colorful-Background.png";
-import kingBackground from "../assets/King-Background.png";
+import background from "../assets/Background.png";
+import royalBackground from "../assets/Royal-Background.jpg";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -55,7 +54,7 @@ export function Game() {
     setTimeout(() => {
       setShowKingEmote(false);
       setGameStartState(false);
-    }, 4500);
+    }, 4250);
   }, []);
 
   // useEffect to update cards at the end of a round
@@ -95,18 +94,19 @@ export function Game() {
         // Game Reset Logic, probably port it to Restart modal if you make it
         setShowKingEmote(false);
         setGameOver(false);
-        setSelectedCards([]);
+
         setCardsFlipped(true);
 
         setTimeout(() => {
           setGameStartState(true);
           setShowKingEmote(true);
-        }, 750);
+          setSelectedCards([]);
+        }, 1250);
 
         setTimeout(() => {
           setShowKingEmote(false);
           setGameStartState(false);
-        }, 4500);
+        }, 5000);
       }, 1000);
     } else {
       setSelectedCards([...selectedCards, cardId]);
@@ -120,8 +120,10 @@ export function Game() {
     <div
       className="game-page"
       style={{
-        background: `url(${colorfulBackground}) no-repeat`,
-        backgroundSize: "cover",
+        background: `url(${royalBackground}) no-repeat`,
+        backgroundSize: "100vw 110vh",
+        backgroundPositionY: "-10vh",
+        backgroundPositionX: "0vw",
       }}
     >
       <div className="king-div">

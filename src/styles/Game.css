@@ -4,7 +4,8 @@
   height: 100%;
   font-family: myFontRegular;
   grid-template-rows: 100vh;
-  align-items: start;
+  align-items: center;
+  background: linear-gradient(135deg, #4992ff 0%, #001682 100%);
 }
 
 .cards {
@@ -16,22 +17,25 @@
   row-gap: 1.5rem;
   column-gap: 3rem;
   padding-top: 5rem;
-  margin: 0 auto;
+  margin-left: 4rem;
 }
 
 .king-div {
   font-size: 3rem;
-  padding-top: 7.5rem;
+  margin-top: 9rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: end;
+  margin-left: 0rem;
   gap: 4rem;
 }
 
 #king {
-  width: 400px;
-  height: 500px;
+  width: 600px;
+  height: 700px;
+  /* box-shadow: inset 0px 5rem 5rem rgb(255, 255, 255),
+    inset 0px -5rem 5rem rgb(255, 255, 255), 0px 0 10rem rgb(0, 0, 0); */
+  border-radius: 15px;
 }
 
 .king-emote {
@@ -52,8 +56,16 @@
   display: flex;
   flex-direction: column;
   align-items: end;
-  padding-top: 1rem;
+  padding: 1rem;
   color: white;
+  background-color: rgb(23, 23, 23, 0.7);
+  border-radius: 15px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.score-board-div > p:last-child {
+  margin-right: 0.25rem;
 }
 
 @keyframes emote-pop-up {
