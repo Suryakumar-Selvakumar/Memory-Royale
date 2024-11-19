@@ -6,7 +6,6 @@ import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/King.png";
 import { setKingEmote } from "../utils/kingImageSetter";
-import background from "../assets/Background.png";
 import royalBackground from "../assets/Royal-Background.jpg";
 
 const apiToken = import.meta.env.VITE_API_KEY;
