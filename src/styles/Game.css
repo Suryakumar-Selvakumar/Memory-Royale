@@ -4,7 +4,7 @@
   height: 100%;
   font-family: myFontRegular;
   grid-template-rows: 100vh;
-  align-items: center;
+  align-items: flex-start;
   background: linear-gradient(135deg, #4992ff 0%, #001682 100%);
 }
 
@@ -18,54 +18,39 @@
   column-gap: 3rem;
   padding-top: 5rem;
   margin-left: 4rem;
+  margin-top: 7.5vh;
 }
 
 .king-div {
   font-size: 3rem;
-  margin-top: 9rem;
   display: flex;
-  align-items: center;
+  align-items: start;
+  justify-content: center;
   flex-direction: column;
-  margin-left: 0rem;
   gap: 4rem;
+  margin-left: 20vh;
 }
 
 #king {
-  width: 600px;
-  height: 700px;
-  /* box-shadow: inset 0px 5rem 5rem rgb(255, 255, 255),
-    inset 0px -5rem 5rem rgb(255, 255, 255), 0px 0 10rem rgb(0, 0, 0); */
+  width: 25vw;
+  height: 60vh;
   border-radius: 15px;
+  position: absolute;
+  top: 40vh;
+  left: 7.5vh;
 }
 
 .king-emote {
   width: 200px;
-  position: relative;
   opacity: 0;
+  position: relative;
+  margin-top: 20vh;
 }
 
 .king-emote.visible {
   transform-origin: bottom;
   animation: emote-pop-up 500ms ease;
   opacity: 1;
-}
-
-.score-board-div {
-  font-size: 3rem;
-  place-self: start end;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  padding: 1rem;
-  color: white;
-  background-color: rgb(23, 23, 23, 0.7);
-  border-radius: 15px;
-  margin-top: 1rem;
-  margin-right: 1rem;
-}
-
-.score-board-div > p:last-child {
-  margin-right: 0.25rem;
 }
 
 @keyframes emote-pop-up {
@@ -80,4 +65,22 @@
     top: 0px;
     opacity: 1;
   }
+}
+
+.score-board-div {
+  font-size: 3rem;
+  place-self: start end;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 1rem;
+  color: white;
+  background-color: rgb(23, 23, 23, 0.8);
+  border-radius: 15px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.score-board-div > p:last-child {
+  margin-right: 1.25rem;
 }
