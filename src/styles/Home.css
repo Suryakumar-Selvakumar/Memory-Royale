@@ -1,0 +1,22 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: myFontBold;
+  height: 100vh;
+  align-items: center;
+}
+
+.logo {
+  font-size: 4rem;
+  line-height: 1;
+  color: rgb(255, 255, 255);
+}
+
+/* .logo:last-child {
+  background: linear-gradient(to bottom, #ffff39 0%, #ab6600 50%, #ffcc00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  font-weight: bold;
+} */

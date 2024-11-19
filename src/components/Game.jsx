@@ -4,9 +4,9 @@ import { fetchCards } from "../services/api";
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
-import king from "../assets/King.png";
+import king from "../assets/King-Image.png";
 import { setKingEmote } from "../utils/kingImageSetter";
-import royalBackground from "../assets/Royal-Background.jpg";
+import royalBackground from "../assets/Game-Background.jpg";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
