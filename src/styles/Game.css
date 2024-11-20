@@ -5,7 +5,6 @@
   font-family: myFontRegular;
   grid-template-rows: 100vh;
   align-items: flex-start;
-  background: linear-gradient(135deg, #4992ff 0%, #001682 100%);
 }
 
 .cards {

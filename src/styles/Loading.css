@@ -1,0 +1,55 @@
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  font-family: myFontBold;
+  min-height: 100vh;
+  justify-content: end;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.loading-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#progress {
+  color: white;
+  text-shadow: 0 0 10px black;
+  -webkit-text-stroke: 3px rgb(0, 0, 0);
+  font-size: 3rem;
+  position: relative;
+  bottom: -17.5px;
+  line-height: 1;
+}
+
+.loading-wrapper {
+  height: 3vh;
+  background-color: black;
+  border-top: 4px solid black;
+  width: 100vw;
+}
+
+#loader {
+  background: linear-gradient(
+    180deg,
+    rgb(0, 153, 255) 0%,
+    rgb(0, 153, 255) 50%,
+    #0a6cff 50%,
+    #0a6cff 100%
+  );
+  animation: loading 5s linear;
+  display: block;
+  height: 100%;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
