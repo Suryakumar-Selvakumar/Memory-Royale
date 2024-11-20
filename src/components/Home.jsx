@@ -22,7 +22,7 @@ export function Home() {
         </div>
         <img id="crown-icon" src={crownIcon} alt="a books icon" />
       </div>
-      <button className="btn btn-shadow btn-shadow--orange">
+      <button className="btn btn-shadow btn-shadow--orange btn-pushable">
         <span>Play</span>
       </button>
     </div>
