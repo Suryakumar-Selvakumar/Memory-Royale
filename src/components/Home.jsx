@@ -12,13 +12,7 @@ import royaleText from "../assets/Royale.png";
 
 export function Home() {
   return (
-    <div
-    //   style={{
-    //     background: `url(${background}) no-repeat`,
-    //     backgroundSize: "100vw 120vh",
-    //   }}
-      className="home-page"
-    >
+    <div className="home-page">
       <div className="app-name">
         <div className="icons">
           <img src={magicItems} id="magic-items" alt="an icon of magic items" />
@@ -29,6 +23,9 @@ export function Home() {
         </div>
         <img id="crown-icon" src={crownIcon} alt="a books icon" />
       </div>
+      <button className="btn btn-shadow btn-shadow--orange">
+        <span>Play</span>
+      </button>
     </div>
   );
 }

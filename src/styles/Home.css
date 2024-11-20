@@ -7,7 +7,7 @@
   align-items: center;
   background: linear-gradient(180deg, #00a6ff 0%, #002afb 100%);
   padding-top: 10vh;
-  padding-right: 5rem;
+  gap: 20rem;
 }
 
 .logo {
@@ -21,9 +21,6 @@
 }
 
 .logo:last-child {
-  /* background: linear-gradient(to bottom, #ffff39 0%, #ab6600 50%, #ffcc00 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   font-size: 6.5rem;
 }
 
@@ -31,6 +28,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding-right: 5rem;
 }
 
 .icons {
@@ -54,4 +52,71 @@
 
 #royale-text {
   width: 250px;
+}
+
+#play-btn {
+  border-radius: 15px;
+  border: none;
+  font-size: 4rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: white;
+  background-color: orange;
+  box-shadow: 0 5px 20px rgb(81, 81, 81);
+}
+
+.btn {
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.btn-shadow {
+  display: inline-block;
+  margin: 5px;
+  font-weight: 500;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+  position: relative;
+  text-align: center;
+  background: none;
+  outline: none;
+  border: none;
+}
+.btn-shadow::before {
+  content: "";
+  height: 40px;
+  position: absolute;
+  bottom: -1px;
+  left: 10px;
+  right: 10px;
+  z-index: 0;
+  border-radius: 2em;
+  filter: blur(14px) brightness(0.9);
+}
+.btn-shadow span {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: 0.3s ease-out;
+  padding: 16px 60px;
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+  will-change: transform, filter;
+}
+.btn-shadow:hover {
+  color: rgb(255, 255, 255);
+}
+.btn-shadow:hover span {
+  filter: brightness(0.9) contrast(1.2);
+  transform: scale(0.96);
+}
+.btn-shadow:hover::before {
+  bottom: 8px;
+  filter: blur(6px) brightness(0.8);
+  left: 15px;
+  right: 15px;
+}
+.btn-shadow--orange span {
+  background: orange;
+  padding: 2rem 3rem;
 }
