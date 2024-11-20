@@ -1,18 +1,17 @@
 import "../styles/Home.css";
-import background from "../assets/King-Background-3.png";
-import homeBackground from "../assets/Home-Background-6.png";
-import booksIcon from "../assets/Books-Icon.png";
-import starIconGold from "../assets/Star-Gold-Icon.png";
-import magicItems from "../assets/Magic-Items-Icon.png";
-import cardsIcon from "../assets/Cards-Icon.png";
-import cardsDraftIcon from "../assets/Cards-Draft-Icon.png";
-import cardsSwapIcon from "../assets/Cards-Swap-Icon.png";
-import crownIcon from "../assets/Crown-Icon.png";
-import royaleText from "../assets/Royale.png";
+import magicItems from "../assets/icons/Magic-Items-Icon.png";
+import crownIcon from "../assets/icons/Crown-Icon.png";
+import background from "../assets/backgrounds/Game-Background.jpg";
 
 export function Home() {
   return (
-    <div className="home-page">
+    <div
+      className="home-page"
+      style={{
+        background: `url(${background})`,
+        backgroundSize: "100vw 100vh",
+      }}
+    >
       <div className="app-name">
         <div className="icons">
           <img src={magicItems} id="magic-items" alt="an icon of magic items" />

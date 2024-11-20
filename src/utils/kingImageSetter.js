@@ -1,12 +1,12 @@
-import kingThumbsUp from "../assets/King-Thumbs-Up-Emote.png";
-import kingBook from "../assets/King-Book-Emote.png";
-import kingAngry from "../assets/King-Angry-Emote.png";
-import kingTenPoints from "../assets/King-10-Points-Emote.png";
-import kingVictory from "../assets/King-Victory-Emote.png";
-import kingHappy from "../assets/King-Happy-Emote.png";
-import kingPixelLaugh from "../assets/King-Pixel-Laugh-Emote.png";
-import kingPirate from "../assets/King-Pirate-Emote.png";
-import kingEmperor from "../assets/King-Emperor-Emote.png";
+import kingThumbsUp from "../assets/emotes/King-Thumbs-Up-Emote.png";
+import kingBook from "../assets/emotes/King-Book-Emote.png";
+import kingAngry from "../assets/emotes/King-Angry-Emote.png";
+import kingTenPoints from "../assets/emotes/King-10-Points-Emote.png";
+import kingVictory from "../assets/emotes/King-Victory-Emote.png";
+import kingHappy from "../assets/emotes/King-Happy-Emote.png";
+import kingPixelLaugh from "../assets/emotes/King-Pixel-Laugh-Emote.png";
+import kingPirate from "../assets/emotes/King-Pirate-Emote.png";
+import kingEmperor from "../assets/emotes/King-Emperor-Emote.png";
 
 export function setKingEmote(score, bestScore, gameOver, gameStartState) {
   let imgSrc;
