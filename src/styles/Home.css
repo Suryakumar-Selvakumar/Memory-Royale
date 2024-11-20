@@ -1,22 +1,57 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   font-family: myFontBold;
   height: 100vh;
   align-items: center;
+  background: linear-gradient(180deg, #00a6ff 0%, #002afb 100%);
+  padding-top: 10vh;
+  padding-right: 5rem;
 }
 
 .logo {
-  font-size: 4rem;
-  line-height: 1;
+  font-size: 4.75rem;
+  line-height: 0.85;
   color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px black;
+  text-align: right;
+  position: relative;
+  left: 12.5px;
 }
 
-/* .logo:last-child {
-  background: linear-gradient(to bottom, #ffff39 0%, #ab6600 50%, #ffcc00 100%);
+.logo:last-child {
+  /* background: linear-gradient(to bottom, #ffff39 0%, #ab6600 50%, #ffcc00 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 4rem;
-  font-weight: bold;
-} */
+  -webkit-text-fill-color: transparent; */
+  font-size: 6.5rem;
+}
+
+.app-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+}
+
+#crown-icon {
+  width: 175px;
+
+  position: relative;
+}
+
+#magic-items {
+  width: 300px;
+  height: 450px;
+  position: relative;
+  top: -75px;
+  left: 75px;
+}
+
+#royale-text {
+  width: 250px;
+}

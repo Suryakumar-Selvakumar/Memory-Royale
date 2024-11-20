@@ -1,18 +1,34 @@
 import "../styles/Home.css";
-import background from "../assets/King-Background-1.jpg";
-import homeBackground from "../assets/Home-Background-5.png";
+import background from "../assets/King-Background-3.png";
+import homeBackground from "../assets/Home-Background-6.png";
+import booksIcon from "../assets/Books-Icon.png";
+import starIconGold from "../assets/Star-Gold-Icon.png";
+import magicItems from "../assets/Magic-Items-Icon.png";
+import cardsIcon from "../assets/Cards-Icon.png";
+import cardsDraftIcon from "../assets/Cards-Draft-Icon.png";
+import cardsSwapIcon from "../assets/Cards-Swap-Icon.png";
+import crownIcon from "../assets/Crown-Icon.png";
+import royaleText from "../assets/Royale.png";
 
 export function Home() {
   return (
     <div
-      style={{
-        background: `url(${homeBackground}) no-repeat`,
-        backgroundSize: "100vw 110vh",
-      }}
+    //   style={{
+    //     background: `url(${background}) no-repeat`,
+    //     backgroundSize: "100vw 120vh",
+    //   }}
       className="home-page"
     >
-      <p className="logo">Memory</p>
-      <p className="logo">Royale</p>
+      <div className="app-name">
+        <div className="icons">
+          <img src={magicItems} id="magic-items" alt="an icon of magic items" />
+        </div>
+        <div className="logo-container">
+          <p className="logo">MEMORY</p>
+          <p className="logo">ROYALE</p>
+        </div>
+        <img id="crown-icon" src={crownIcon} alt="a books icon" />
+      </div>
     </div>
   );
 }
