@@ -6,8 +6,8 @@
   transition: all 500ms ease;
   position: relative;
   --base-delay: 200ms;
-  --base-column-offset: -12.5vw;
-  --base-row-offset: 27.5vh;
+  --base-column-offset: -275px;
+  --base-row-offset: 500px;
   --card-width: 200px;
   --card-height: 275px;
   width: var(--card-width);
@@ -26,11 +26,11 @@
 }
 
 .card:nth-child(n + 5):nth-child(-n + 8) {
-  --row-height-offset: calc(var(--base-row-offset) * 0);
+  --row-height-offset: calc(var(--base-row-offset) * 0.2);
 }
 
 .card:nth-child(n + 9):nth-child(-n + 12) {
-  --row-height-offset: calc(var(--base-row-offset) * -1);
+  --row-height-offset: calc(var(--base-row-offset) * -0.45);
 }
 
 .card:nth-child(1),
