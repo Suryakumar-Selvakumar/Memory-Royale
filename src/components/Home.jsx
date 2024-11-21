@@ -2,6 +2,10 @@ import "../styles/Home.css";
 import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import background from "../assets/backgrounds/Game-Background.jpg";
+import soundOn from "../assets/svg/sound-on.svg";
+import soundOff from "../assets/svg/sound-off.svg";
+import musicOn from "../assets/svg/music-on.svg";
+import musicOff from "../assets/svg/music-off.svg";
 
 export function Home({ setCurrentPage }) {
   function startGame() {
@@ -32,6 +36,10 @@ export function Home({ setCurrentPage }) {
       >
         <span>Play</span>
       </button>
+      <div className="app-buttons">
+        <img className="app-svgs" src={soundOn} alt="sound on button" />
+        <img className="app-svgs" src={musicOn} alt="music on button" />
+      </div>
     </div>
   );
 }
