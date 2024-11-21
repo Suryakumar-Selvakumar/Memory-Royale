@@ -146,10 +146,13 @@ export function Game() {
           ))}
         </div>
       )}
-      <div className="score-board-div">
-        <p>Best Score: {bestScore}</p>
-        <p>Score: {score}</p>
-      </div>
+
+      {cards && (
+        <div className="score-board-div">
+          <p>Best Score: {bestScore}</p>
+          <p>Score: {score}</p>
+        </div>
+      )}
     </div>
   );
 }
