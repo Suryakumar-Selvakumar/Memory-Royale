@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import { fetchCards } from "../services/api";
+
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
@@ -8,12 +8,7 @@ import king from "../assets/icons/King-Image.png";
 import { setKingEmote } from "../utils/kingImageSetter";
 import royalBackground from "../assets/backgrounds/Game-Background.jpg";
 
-const apiToken = import.meta.env.VITE_API_KEY;
-const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
-
-const allCards = (async () => await fetchCards(apiUrl, apiToken))();
-
-export function Game() {
+export function Game({ allCards }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
 
   // ScoreBoard states
@@ -43,7 +38,7 @@ export function Game() {
 
   // useEffect to fetch from the API
   useEffect(() => {
-    setShowKingEmote(true);
+    setTimeout(() => setShowKingEmote(true), 250);
 
     (async () => {
       const cardsArray = await allCards;
@@ -72,7 +67,7 @@ export function Game() {
     setTimeout(() => {
       if (!gameStartState) setShowKingEmote(false);
     }, 1000);
-  }, [selectedCards, gameStartState]);
+  }, [selectedCards, gameStartState, allCards]);
 
   // useEffect to update bestScore if new bestScore is obtained
   useEffect(() => {
