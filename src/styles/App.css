@@ -68,3 +68,7 @@ h6 {
   src: url("../fonts/clash_regular-webfont.woff2") format("woff2"),
     url("../fonts/clash_regular-webfont.woff") format("woff");
 }
+
+.loading-page {
+  display: none;
+}

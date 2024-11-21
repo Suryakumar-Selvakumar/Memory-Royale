@@ -120,9 +120,7 @@ export function Game() {
       className="game-page"
       style={{
         background: `url(${royalBackground}) no-repeat`,
-        backgroundSize: "100vw 110vh",
-        backgroundPositionY: "-10vh",
-        backgroundPositionX: "0vw",
+        backgroundSize: "100vw 100vh",
       }}
     >
       <div className="king-div">

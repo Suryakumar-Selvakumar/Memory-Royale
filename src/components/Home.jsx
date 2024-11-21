@@ -3,7 +3,11 @@ import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import background from "../assets/backgrounds/Game-Background.jpg";
 
-export function Home() {
+export function Home({ setCurrentPage }) {
+  function startGame() {
+    setTimeout(() => setCurrentPage("loading"), 500);
+  }
+
   return (
     <div
       className="home-page"
@@ -22,7 +26,10 @@ export function Home() {
         </div>
         <img id="crown-icon" src={crownIcon} alt="a books icon" />
       </div>
-      <button className="btn btn-shadow btn-shadow--orange btn-pushable">
+      <button
+        className="btn btn-shadow btn-shadow--orange btn-pushable"
+        onClick={() => startGame()}
+      >
         <span>Play</span>
       </button>
     </div>

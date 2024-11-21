@@ -4,7 +4,7 @@ import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import { useEffect, useRef, useState } from "react";
 
-export function Loading() {
+export function Loading({ setCurrentPage }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -23,6 +23,14 @@ export function Loading() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (progress == 100) {
+        setCurrentPage("game");
+      }
+    }, 250);
+  }, [progress, setCurrentPage]);
 
   return (
     <div
