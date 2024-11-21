@@ -1,12 +1,16 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/icons/King-Image.png";
 import { setKingEmote } from "../utils/kingImageSetter";
 import royalBackground from "../assets/backgrounds/Game-Background.jpg";
+import soundOn from "../assets/svg/sound-on.svg";
+import soundOff from "../assets/svg/sound-off.svg";
+import musicOn from "../assets/svg/music-on.svg";
+import musicOff from "../assets/svg/music-off.svg";
+import exit from "../assets/svg/exit.svg";
 
 export function Game({ allCards }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -60,9 +64,7 @@ export function Game({ allCards }) {
         setShowCard(true);
       })();
     }, 500);
-    setTimeout(() => {
-      setCardsFlipped(false);
-    }, 750);
+    setTimeout(() => setCardsFlipped(false), 750);
 
     setTimeout(() => {
       if (!gameStartState) setShowKingEmote(false);
@@ -146,6 +148,11 @@ export function Game({ allCards }) {
         <div className="score-board-div">
           <p>Best Score: {bestScore}</p>
           <p>Score: {score}</p>
+          <div className="app-buttons">
+            <img className="app-svgs" src={soundOn} alt="sound on button" />
+            <img className="app-svgs" src={musicOn} alt="music on button" />
+            <img className="app-svgs" src={exit} alt="exit button" />
+          </div>
         </div>
       )}
     </div>
