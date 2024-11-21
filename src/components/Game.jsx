@@ -12,7 +12,7 @@ import musicOn from "../assets/svg/music-on.svg";
 import musicOff from "../assets/svg/music-off.svg";
 import exit from "../assets/svg/exit.svg";
 
-export function Game({ allCards }) {
+export function Game({ allCards, setCurrentPage }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
 
   // ScoreBoard states
@@ -151,7 +151,12 @@ export function Game({ allCards }) {
           <div className="app-buttons">
             <img className="app-svgs" src={soundOn} alt="sound on button" />
             <img className="app-svgs" src={musicOn} alt="music on button" />
-            <img className="app-svgs" src={exit} alt="exit button" />
+            <img
+              className="app-svgs"
+              src={exit}
+              alt="exit button"
+              onClick={() => setCurrentPage("home")}
+            />
           </div>
         </div>
       )}
