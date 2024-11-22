@@ -11,6 +11,8 @@ import soundOff from "../assets/svg/sound-off.svg";
 import musicOn from "../assets/svg/music-on.svg";
 import musicOff from "../assets/svg/music-off.svg";
 import exit from "../assets/svg/exit.svg";
+import question from "../assets/svg/question.svg";
+import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 
 export function Game({ allCards, setCurrentPage }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -25,6 +27,7 @@ export function Game({ allCards, setCurrentPage }) {
   const [gameOver, setGameOver] = useState(false);
   const [showKingEmote, setShowKingEmote] = useState(false);
   const [gameStartState, setGameStartState] = useState(true);
+  const [showToolTip, setShowToolTip] = useState(false);
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -145,12 +148,33 @@ export function Game({ allCards, setCurrentPage }) {
       )}
 
       {cards && (
-        <div className="score-board-div">
-          <p>Best Score: {bestScore}</p>
-          <p>Score: {score}</p>
-          <div className="app-buttons">
-            <img className="app-svgs" src={soundOn} alt="sound on button" />
-            <img className="app-svgs" src={musicOn} alt="music on button" />
+        <div className="right-side">
+
+          <div className="score-board-div">
+            <p>Best Score: {bestScore}</p>
+            <p>Score: {score}</p>
+          </div>
+
+          <div className="app-btns">
+            <div className="sound-btns">
+              <img className="app-svgs" src={soundOn} alt="sound on button" />
+              <img className="app-svgs" src={musicOn} alt="music on button" />
+            </div>
+            <img
+              className="app-svgs"
+              src={question}
+              alt="sound on button"
+              onClick={() => setShowToolTip(!showToolTip)}
+            />
+            <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+              <p>Don't click on the same card twice!</p>
+              <img
+                src={kingToolTip}
+                id="king-tool-tip"
+                alt="Clash Royale king pointing up icon"
+              />
+            </div>
+
             <img
               className="app-svgs"
               src={exit}
