@@ -170,3 +170,33 @@
   width: 75px;
   cursor: pointer;
 }
+
+.tool-tip {
+  position: absolute;
+  left: 6rem;
+  transform: translateY(400px);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.tool-tip.visible {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.tool-tip p {
+  color: white;
+  width: 375px;
+  background-color: rgb(0, 0, 0, 0.75);
+  box-shadow: 0 0 5px rgb(72, 72, 72);
+  padding: 1rem 0.5rem;
+  border-radius: 15px;
+  position: relative;
+  text-align: center;
+  left: 14rem;
+  top: 2rem;
+}
+
+#king-tool-tip {
+  width: 250px;
+}

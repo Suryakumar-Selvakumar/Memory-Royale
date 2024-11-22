@@ -7,8 +7,12 @@ import soundOff from "../assets/svg/sound-off.svg";
 import musicOn from "../assets/svg/music-on.svg";
 import musicOff from "../assets/svg/music-off.svg";
 import question from "../assets/svg/question.svg";
+import kingToolTip from "../assets/icons/King-Tool-Tip.png";
+import { useState } from "react";
 
 export function Home({ setCurrentPage }) {
+  const [showToolTip, setShowToolTip] = useState(false);
+
   function startGame() {
     setTimeout(() => setCurrentPage("loading"), 500);
   }
@@ -22,7 +26,20 @@ export function Home({ setCurrentPage }) {
       }}
     >
       <div className="left-side-icons">
-        <img className="app-svgs" src={question} alt="sound on button" />
+        <img
+          className="app-svgs"
+          src={question}
+          alt="sound on button"
+          onClick={() => setShowToolTip(!showToolTip)}
+        />
+        <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+          <p>Don't click on the same card twice!</p>
+          <img
+            src={kingToolTip}
+            id="king-tool-tip"
+            alt="Clash Royale king pointing up icon"
+          />
+        </div>
       </div>
       <div className="app-name">
         <div className="logo-container">
