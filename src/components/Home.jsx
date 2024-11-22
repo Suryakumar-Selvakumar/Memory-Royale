@@ -47,9 +47,11 @@ export function Home({ setCurrentPage }) {
           <span>Play</span>
         </button>
       </div>
-      <div className="right-side-icons">
-        <img className="app-svgs" src={soundOn} alt="sound on button" />
-        <img className="app-svgs" src={musicOn} alt="music on button" />
+      <div className="app-btns">
+        <div className="sound-btns">
+          <img className="app-svgs" src={soundOn} alt="sound on button" />
+          <img className="app-svgs" src={musicOn} alt="music on button" />
+        </div>
         <img
           className="app-svgs"
           src={question}
