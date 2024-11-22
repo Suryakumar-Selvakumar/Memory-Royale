@@ -8,13 +8,20 @@ import musicOn from "../assets/svg/music-on.svg";
 import musicOff from "../assets/svg/music-off.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Home({ setCurrentPage }) {
   const [showToolTip, setShowToolTip] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setShowAnimation(false), 1500);
+  }, []);
 
   function startGame() {
-    setTimeout(() => setCurrentPage("loading"), 500);
+    setTimeout(() => {
+      if (!showAnimation) setCurrentPage("loading");
+    }, 500);
   }
 
   return (
@@ -26,7 +33,9 @@ export function Home({ setCurrentPage }) {
       }}
     >
       <div className="app-name">
-        <div className="logo-container">
+        <div
+          className={showAnimation ? "logo-container start" : "logo-container"}
+        >
           <div className="icons">
             <img
               src={magicItems}
@@ -41,7 +50,11 @@ export function Home({ setCurrentPage }) {
           <img id="crown-icon" src={crownIcon} alt="a books icon" />
         </div>
         <button
-          className="btn btn-shadow btn-shadow--orange btn-pushable"
+          className={
+            showAnimation
+              ? "btn btn-shadow btn-shadow--orange btn-pushable start"
+              : "btn btn-shadow btn-shadow--orange btn-pushable"
+          }
           onClick={() => startGame()}
         >
           <span>Play</span>

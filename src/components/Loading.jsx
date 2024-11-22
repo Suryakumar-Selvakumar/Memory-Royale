@@ -40,11 +40,11 @@ export function Loading({ setCurrentPage }) {
         backgroundSize: "100vw 100vh",
       }}
     >
-      <div className="app-name">
+      <div className="logo-container">
         <div className="icons">
           <img src={magicItems} id="magic-items" alt="an icon of magic items" />
         </div>
-        <div className="logo-container">
+        <div className="logo-name">
           <p className="logo">MEMORY</p>
           <p className="logo">ROYALE</p>
         </div>

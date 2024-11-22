@@ -9,6 +9,10 @@
   padding-top: 10vh;
 }
 
+.loading-page .logo-container {
+  margin-left: -10rem;
+}
+
 .loading-div {
   display: flex;
   flex-direction: column;
