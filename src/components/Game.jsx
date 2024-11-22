@@ -102,7 +102,7 @@ export function Game({ allCards, setCurrentPage }) {
         setTimeout(() => {
           setShowKingEmote(false);
           setGameStartState(false);
-        }, 5000);
+        }, 5500);
       }, 1000);
     } else {
       setSelectedCards([...selectedCards, cardId]);
