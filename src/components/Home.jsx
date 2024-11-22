@@ -25,22 +25,6 @@ export function Home({ setCurrentPage }) {
         backgroundSize: "100vw 100vh",
       }}
     >
-      <div className="left-side-icons">
-        <img
-          className="app-svgs"
-          src={question}
-          alt="sound on button"
-          onClick={() => setShowToolTip(!showToolTip)}
-        />
-        <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
-          <p>Don't click on the same card twice!</p>
-          <img
-            src={kingToolTip}
-            id="king-tool-tip"
-            alt="Clash Royale king pointing up icon"
-          />
-        </div>
-      </div>
       <div className="app-name">
         <div className="logo-container">
           <div className="icons">
@@ -66,6 +50,20 @@ export function Home({ setCurrentPage }) {
       <div className="right-side-icons">
         <img className="app-svgs" src={soundOn} alt="sound on button" />
         <img className="app-svgs" src={musicOn} alt="music on button" />
+        <img
+          className="app-svgs"
+          src={question}
+          alt="sound on button"
+          onClick={() => setShowToolTip(!showToolTip)}
+        />
+        <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+          <p>Don't click on the same card twice!</p>
+          <img
+            src={kingToolTip}
+            id="king-tool-tip"
+            alt="Clash Royale king pointing up icon"
+          />
+        </div>
       </div>
     </div>
   );
