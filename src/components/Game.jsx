@@ -118,10 +118,10 @@ export function Game({ allCards, setCurrentPage }) {
   return (
     <div
       className="game-page"
-      style={{
-        background: `url(${royalBackground}) no-repeat`,
-        backgroundSize: "100vw 100vh",
-      }}
+      // style={{
+      //   background: `url(${royalBackground}) no-repeat`,
+      //   backgroundSize: "100vw 100vh",
+      // }}
     >
       <div className="king-div">
         <img
@@ -149,7 +149,6 @@ export function Game({ allCards, setCurrentPage }) {
 
       {cards && (
         <div className="right-side">
-
           <div className="score-board-div">
             <p>Best Score: {bestScore}</p>
             <p>Score: {score}</p>

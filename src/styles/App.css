@@ -69,10 +69,17 @@ h6 {
     url("../fonts/clash_regular-webfont.woff") format("woff");
 }
 
-.loading-page {
-  display: none;
-}
-
 body {
   overflow: hidden;
+  background-image: url("../assets/backgrounds/Game-Background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+@media (min-width: 360px) and (max-width: 1700px) {
+  body {
+    overflow: visible;
+    background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
+    background-repeat: no-repeat;
+  }
 }

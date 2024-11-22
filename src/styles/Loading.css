@@ -1,16 +1,18 @@
 .loading-page {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   font-family: myFontBold;
   min-height: 100vh;
-  justify-content: space-between;
-  align-items: center;
+  align-items: end;
   box-sizing: border-box;
   padding-top: 10vh;
+  grid-template-rows: 1fr 1fr;
 }
 
 .loading-page .logo-container {
-  margin-left: -10rem;
+  place-self: center;
+  position: relative;
+  left: -2.4vw;
+  top: -4.9vh;
 }
 
 .loading-div {

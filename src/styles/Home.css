@@ -26,16 +26,17 @@
   flex-direction: column;
   gap: 15rem;
   padding-top: 10vh;
+  margin-left: 5vw;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-left: 5rem;
 }
 
 .logo-container.start {
+  transform-origin: 550px bottom;
   animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
 }
 
@@ -69,6 +70,7 @@
 }
 
 .btn.start {
+  transform-origin: center 200px;
   animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
 }
 
@@ -214,4 +216,13 @@
 #king-tool-tip {
   width: 250px;
   transform: rotateY(180deg);
+}
+
+@media (min-width: 360px) and (max-width: 1700px) {
+  .home-page {
+    display: grid;
+    font-family: myFontBold;
+
+    grid-template-columns: 1fr 250px;
+  }
 }
