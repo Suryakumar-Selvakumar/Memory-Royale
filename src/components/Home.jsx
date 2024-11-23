@@ -26,65 +26,125 @@ export function Home({ setCurrentPage }) {
   }
 
   const mediaQuery = window.matchMedia(
-    "(min-width: 360px) and (max-width: 767px)"
+    "(min-width: 360px) and (max-width: 1440px)"
   );
 
   return (
     <div
-      className="home-page"
-      // style={{
-      //   background: `url(${!mediaQuery.matches && background})`,
-      //   backgroundSize: !mediaQuery.matches && "100% 100%",
-      // }}
+      className={!mediaQuery.matches ? "home-page" : "home-page--mobile"}
+      style={{
+        background: `url(${!mediaQuery.matches && background})`,
+        backgroundSize: !mediaQuery.matches && "cover",
+      }}
     >
-      <div className="app-name">
-        <div
-          className={showAnimation ? "logo-container start" : "logo-container"}
-        >
-          <div className="icons">
+      {!mediaQuery.matches ? (
+        <>
+          <div className="app-name">
+            <div
+              className={
+                showAnimation ? "logo-container start" : "logo-container"
+              }
+            >
+              <img
+                src={magicItems}
+                id="magic-items"
+                alt="an icon of magic items"
+              />
+              <div>
+                <p className="logo">MEMORY</p>
+                <p className="logo">ROYALE</p>
+              </div>
+              <img id="crown-icon" src={crownIcon} alt="a books icon" />
+            </div>
+            <button
+              className={
+                showAnimation
+                  ? "btn btn-shadow btn-shadow--orange btn-pushable start"
+                  : "btn btn-shadow btn-shadow--orange btn-pushable"
+              }
+              onClick={() => startGame()}
+            >
+              <span>Play</span>
+            </button>
+          </div>
+          <div className="app-btns">
+            <div className="btn-svgs">
+              <img className="app-svgs" src={soundOn} alt="sound on button" />
+              <img className="app-svgs" src={musicOn} alt="music on button" />
+              <img
+                className="app-svgs"
+                src={question}
+                alt="sound on button"
+                onClick={() => setShowToolTip(!showToolTip)}
+              />
+            </div>
+            <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+              <p>Don't click on the same card twice!</p>
+              <img
+                src={kingToolTip}
+                id="king-tool-tip"
+                alt="Clash Royale king pointing up icon"
+              />
+            </div>
+          </div>{" "}
+        </>
+      ) : (
+        // MOBILE UNIQUE LAYOUT
+        <>
+          <div
+            className={
+              showAnimation
+                ? "logo-container--mobile start"
+                : "logo-container--mobile"
+            }
+          >
             <img
               src={magicItems}
-              id="magic-items"
+              id="magic-items--mobile"
               alt="an icon of magic items"
             />
+            <div className="logo-name--mobile">
+              <p className="logo--mobile">MEMORY</p>
+              <p className="logo--mobile">ROYALE</p>
+            </div>
+            <img id="crown-icon--mobile" src={crownIcon} alt="a books icon" />
           </div>
-          <div className="logo-name">
-            <p className="logo">MEMORY</p>
-            <p className="logo">ROYALE</p>
+          <button
+            className={
+              showAnimation
+                ? "btn--mobile btn-shadow--mobile btn-shadow--orange--mobile btn-pushable--mobile start"
+                : "btn--mobile btn-shadow--mobile btn-shadow--orange--mobile btn-pushable--mobile"
+            }
+            onClick={() => startGame()}
+          >
+            <span>Play</span>
+          </button>
+          <div className="app-btns--mobile">
+            <div className="btn-svgs--mobile">
+              <img className="app-svgs--mobile" src={soundOn} alt="sound on button" />
+              <img className="app-svgs--mobile" src={musicOn} alt="music on button" />
+              <img
+                className="app-svgs--mobile"
+                src={question}
+                alt="sound on button"
+                onClick={() => setShowToolTip(!showToolTip)}
+              />
+            </div>
+            <div
+              className={
+                showToolTip ? "tool-tip--mobile visible" : "tool-tip--mobile"
+              }
+            >
+              <p>Don't click on the same card twice!</p>
+              <img
+                src={kingToolTip}
+                id="king-tool-tip--mobile"
+                alt="Clash Royale king pointing up icon"
+              />
+            </div>
           </div>
-          <img id="crown-icon" src={crownIcon} alt="a books icon" />
-        </div>
-        <button
-          className={
-            showAnimation
-              ? "btn btn-shadow btn-shadow--orange btn-pushable start"
-              : "btn btn-shadow btn-shadow--orange btn-pushable"
-          }
-          onClick={() => startGame()}
-        >
-          <span>Play</span>
-        </button>
-      </div>
-      <div className="app-btns">
-        <div className="sound-btns">
-          <img className="app-svgs" src={soundOn} alt="sound on button" />
-          <img className="app-svgs" src={musicOn} alt="music on button" />
-        </div>
-        <img
-          className="app-svgs"
-          src={question}
-          alt="sound on button"
-          onClick={() => setShowToolTip(!showToolTip)}
-        />
-        <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
-          <p>Don't click on the same card twice!</p>
-          <img
-            src={kingToolTip}
-            id="king-tool-tip"
-            alt="Clash Royale king pointing up icon"
-          />
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

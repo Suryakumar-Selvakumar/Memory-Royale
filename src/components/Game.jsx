@@ -118,10 +118,10 @@ export function Game({ allCards, setCurrentPage }) {
   return (
     <div
       className="game-page"
-      // style={{
-      //   background: `url(${royalBackground}) no-repeat`,
-      //   backgroundSize: "100vw 100vh",
-      // }}
+      style={{
+        background: `url(${royalBackground}) no-repeat`,
+        backgroundSize: "100vw 100vh",
+      }}
     >
       <div className="king-div">
         <img
@@ -155,16 +155,22 @@ export function Game({ allCards, setCurrentPage }) {
           </div>
 
           <div className="app-btns">
-            <div className="sound-btns">
+            <div className="btn-svgs">
               <img className="app-svgs" src={soundOn} alt="sound on button" />
               <img className="app-svgs" src={musicOn} alt="music on button" />
+              <img
+                className="app-svgs"
+                src={question}
+                alt="sound on button"
+                onClick={() => setShowToolTip(!showToolTip)}
+              />
+              <img
+                className="app-svgs"
+                src={exit}
+                alt="exit button"
+                onClick={() => setCurrentPage("home")}
+              />
             </div>
-            <img
-              className="app-svgs"
-              src={question}
-              alt="sound on button"
-              onClick={() => setShowToolTip(!showToolTip)}
-            />
             <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
               <p>Don't click on the same card twice!</p>
               <img
@@ -173,13 +179,6 @@ export function Game({ allCards, setCurrentPage }) {
                 alt="Clash Royale king pointing up icon"
               />
             </div>
-
-            <img
-              className="app-svgs"
-              src={exit}
-              alt="exit button"
-              onClick={() => setCurrentPage("home")}
-            />
           </div>
         </div>
       )}

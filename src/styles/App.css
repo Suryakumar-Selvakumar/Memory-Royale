@@ -48,13 +48,9 @@ h6 {
 }
 
 #root {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 100%;
-  width: 100%;
-  isolation: isolate;
-  padding: 0;
-  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @font-face {
@@ -71,15 +67,23 @@ h6 {
 
 body {
   overflow: hidden;
-  background-image: url("../assets/backgrounds/Game-Background.jpg");
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;
 }
 
-@media (min-width: 360px) and (max-width: 1700px) {
+@media (min-width: 360px) and (max-width: 1440px) {
   body {
-    overflow: visible;
-    background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
+    overflow: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 }

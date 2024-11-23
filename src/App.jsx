@@ -14,13 +14,13 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
   return (
-    <main>
+    <>
       {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
       {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
       {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
       )}
-    </main>
+    </>
   );
 }
 

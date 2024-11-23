@@ -27,7 +27,7 @@ export function Loading({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => {
       if (progress == 100) {
-        // setCurrentPage("game");
+        setCurrentPage("game");
       }
     }, 250);
   }, [progress, setCurrentPage]);
@@ -35,6 +35,10 @@ export function Loading({ setCurrentPage }) {
   return (
     <div
       className="loading-page"
+      style={{
+        background: `url(${background})`,
+        backgroundSize: "100vw 100vh",
+      }}
     >
       <div className="logo-container">
         <div className="icons">
