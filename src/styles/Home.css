@@ -1,27 +1,22 @@
 .home-page {
-  display: grid;
-  font-family: myFontBold;
-  height: 100vh;
-  grid-template-columns: 1fr 250px;
-}
-
-.app-name {
   display: flex;
-  align-items: center;
+  font-family: myFontBold;
   flex-direction: column;
-  gap: 15rem;
-  padding-top: 10vh;
-  margin-left: 5vw;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: center;
+  height: 100vh;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding-top: 10vh;
 }
 
 .logo-container.start {
-  transform-origin: 550px bottom;
+  transform-origin: bottom;
   animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
 }
 
@@ -57,11 +52,10 @@
   font-size: 4rem;
   cursor: pointer;
   position: relative;
-  left: 5rem;
+  padding-top: 10vh;
 }
 
 .btn.start {
-  transform-origin: center;
   animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
 }
 
@@ -158,6 +152,7 @@
   gap: 1rem;
   padding-bottom: 1rem;
   padding-right: 0.5rem;
+  align-self: flex-end;
 }
 
 .btn-svgs {
@@ -205,7 +200,7 @@
 }
 
 @media (min-width: 360px) and (max-width: 768px) {
-  .home-page--mobile {
+  .home-page {
     display: flex;
     font-family: myFontBold;
     flex-direction: column;
@@ -216,19 +211,19 @@
     padding-top: 15vh;
   }
 
-  .logo-container--mobile {
+  .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-left: -45px;
   }
 
-  .logo-container--mobile.start {
+  .logo-container.start {
     transform-origin: 225px bottom;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
-  .logo--mobile {
+  .logo {
     font-size: 2rem;
     line-height: 0.85;
     color: rgb(255, 255, 255);
@@ -239,16 +234,16 @@
     -webkit-text-stroke: 2px rgb(75, 75, 75);
   }
 
-  .logo--mobile:last-child {
+  .logo:last-child {
     font-size: 2.75rem;
   }
 
-  #crown-icon--mobile {
+  #crown-icon {
     width: 75px;
     position: relative;
   }
 
-  #magic-items--mobile {
+  #magic-items {
     width: 125px;
     height: 187.5px;
     position: relative;
@@ -256,18 +251,18 @@
     left: 45px;
   }
 
-  .btn--mobile {
+  .btn {
     font-size: 2rem;
     cursor: pointer;
     padding-top: 15vh;
   }
 
-  .btn--mobile.start {
+  .btn.start {
     transform-origin: center;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
-  .btn-shadow--mobile {
+  .btn-shadow {
     display: inline-block;
     margin: 5px;
     font-weight: 500;
@@ -280,7 +275,7 @@
     border: none;
   }
 
-  .btn-shadow--mobile::before {
+  .btn-shadow::before {
     content: "";
     height: 40px;
     position: absolute;
@@ -292,7 +287,7 @@
     filter: blur(14px) brightness(0.9);
   }
 
-  .btn-shadow--mobile span {
+  .btn-shadow span {
     display: inline-block;
     transform-style: preserve-3d;
     transition: 0.1s ease-out;
@@ -303,23 +298,23 @@
     will-change: transform, filter;
   }
 
-  .btn-shadow--mobile:hover {
+  .btn-shadow:hover {
     color: rgb(255, 255, 255);
   }
 
-  .btn-shadow--mobile:hover span {
+  .btn-shadow:hover span {
     filter: brightness(0.9) contrast(1.2);
     transform: scale(0.96);
   }
 
-  .btn-shadow--mobile:hover::before {
+  .btn-shadow:hover::before {
     bottom: 8px;
     filter: blur(6px) brightness(0.8);
     left: 15px;
     right: 15px;
   }
 
-  .btn-shadow--orange--mobile span {
+  .btn-shadow--orange span {
     background: rgb(255, 183, 0);
     padding: 1.25rem;
     box-shadow: inset 0 -0.25rem 0 rgb(255, 157, 28),
@@ -331,18 +326,18 @@
     outline: 2px solid rgb(59, 59, 59);
   }
 
-  .btn-pushable--mobile span {
+  .btn-pushable span {
     border-radius: 20px;
     border-bottom: 7.5px solid rgb(201, 131, 0);
   }
 
-  .btn-pushable--mobile span:active {
+  .btn-pushable span:active {
     transform: translateY(10px);
     border-bottom-width: 2px;
     box-shadow: none;
   }
 
-  .app-btns--mobile {
+  .app-btns {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -352,17 +347,17 @@
     align-self: flex-end;
   }
 
-  .btn-svgs--mobile {
+  .btn-svgs {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  .app-svgs--mobile {
+  .app-svgs {
     width: 40px;
   }
 
-  .tool-tip--mobile {
+  .tool-tip {
     position: absolute;
     transform: translateY(250px);
     opacity: 0;
@@ -371,12 +366,12 @@
     bottom: 0;
   }
 
-  .tool-tip--mobile.visible {
+  .tool-tip.visible {
     transform: translateY(80px);
     opacity: 1;
   }
 
-  .tool-tip--mobile p {
+  .tool-tip p {
     color: white;
     width: 200px;
     background-color: rgb(0, 0, 0, 0.8);
@@ -390,14 +385,14 @@
     font-size: 0.75rem;
   }
 
-  #king-tool-tip--mobile {
+  #king-tool-tip {
     width: 150px;
     transform: rotateY(180deg);
   }
 }
 
 @media (min-width: 769px) and (max-width: 1440px) {
-  .home-page--mobile {
+  .home-page {
     display: flex;
     font-family: myFontBold;
     flex-direction: column;
@@ -408,19 +403,19 @@
     padding-top: 15vh;
   }
 
-  .logo-container--mobile {
+  .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-left: -45px;
   }
 
-  .logo-container--mobile.start {
+  .logo-container.start {
     transform-origin: 400px bottom;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
-  .logo--mobile {
+  .logo {
     font-size: 3.5rem;
     line-height: 0.85;
     color: rgb(255, 255, 255);
@@ -431,16 +426,16 @@
     -webkit-text-stroke: 2px rgb(75, 75, 75);
   }
 
-  .logo--mobile:last-child {
+  .logo:last-child {
     font-size: 5rem;
   }
 
-  #crown-icon--mobile {
+  #crown-icon {
     width: 150px;
     position: relative;
   }
 
-  #magic-items--mobile {
+  #magic-items {
     width: 225px;
     height: 337.5px;
     position: relative;
@@ -448,18 +443,18 @@
     left: 60px;
   }
 
-  .btn--mobile {
+  .btn {
     font-size: 3.5rem;
     cursor: pointer;
     padding-top: 15vh;
   }
 
-  .btn--mobile.start {
+  .btn.start {
     transform-origin: center;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
-  .btn-shadow--mobile {
+  .btn-shadow {
     display: inline-block;
     margin: 5px;
     font-weight: 500;
@@ -472,7 +467,7 @@
     border: none;
   }
 
-  .btn-shadow--mobile::before {
+  .btn-shadow::before {
     content: "";
     height: 40px;
     position: absolute;
@@ -484,7 +479,7 @@
     filter: blur(14px) brightness(0.9);
   }
 
-  .btn-shadow--mobile span {
+  .btn-shadow span {
     display: inline-block;
     transform-style: preserve-3d;
     transition: 0.1s ease-out;
@@ -495,23 +490,23 @@
     will-change: transform, filter;
   }
 
-  .btn-shadow--mobile:hover {
+  .btn-shadow:hover {
     color: rgb(255, 255, 255);
   }
 
-  .btn-shadow--mobile:hover span {
+  .btn-shadow:hover span {
     filter: brightness(0.9) contrast(1.2);
     transform: scale(0.96);
   }
 
-  .btn-shadow--mobile:hover::before {
+  .btn-shadow:hover::before {
     bottom: 8px;
     filter: blur(6px) brightness(0.8);
     left: 15px;
     right: 15px;
   }
 
-  .btn-shadow--orange--mobile span {
+  .btn-shadow--orange span {
     background: rgb(255, 183, 0);
     padding: 2rem;
     box-shadow: inset 0 -0.25rem 0 rgb(255, 157, 28),
@@ -523,18 +518,18 @@
     outline: 2px solid rgb(59, 59, 59);
   }
 
-  .btn-pushable--mobile span {
+  .btn-pushable span {
     border-radius: 20px;
     border-bottom: 10px solid rgb(201, 131, 0);
   }
 
-  .btn-pushable--mobile span:active {
+  .btn-pushable span:active {
     transform: translateY(10px);
     border-bottom-width: 2px;
     box-shadow: none;
   }
 
-  .app-btns--mobile {
+  .app-btns {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -544,17 +539,17 @@
     align-self: flex-end;
   }
 
-  .btn-svgs--mobile {
+  .btn-svgs {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
 
-  .app-svgs--mobile {
+  .app-svgs {
     width: 55px;
   }
 
-  .tool-tip--mobile {
+  .tool-tip {
     position: absolute;
     transform: translateY(250px);
     opacity: 0;
@@ -563,12 +558,12 @@
     bottom: 0;
   }
 
-  .tool-tip--mobile.visible {
+  .tool-tip.visible {
     transform: translateY(125px);
     opacity: 1;
   }
 
-  .tool-tip--mobile p {
+  .tool-tip p {
     color: white;
     width: 300px;
     background-color: rgb(0, 0, 0, 0.8);
@@ -582,7 +577,7 @@
     font-size: 1.25rem;
   }
 
-  #king-tool-tip--mobile {
+  #king-tool-tip {
     width: 250px;
     transform: rotateY(180deg);
   }
