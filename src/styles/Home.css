@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding-top: 10vh;
+  margin-left: -5rem;
 }
 
 .logo-container.start {
@@ -52,7 +52,6 @@
   font-size: 4rem;
   cursor: pointer;
   position: relative;
-  padding-top: 10vh;
 }
 
 .btn.start {
@@ -208,14 +207,12 @@
     overflow: hidden;
     align-items: center;
     height: 100vh;
-    padding-top: 15vh;
   }
 
   .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-left: -45px;
   }
 
   .logo-container.start {
@@ -254,7 +251,6 @@
   .btn {
     font-size: 2rem;
     cursor: pointer;
-    padding-top: 15vh;
   }
 
   .btn.start {
@@ -342,7 +338,7 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 1vh;
     padding-right: 0.25rem;
     align-self: flex-end;
   }
@@ -391,7 +387,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1440px) {
+@media (min-width: 769px) and (max-width: 1700px) {
   .home-page {
     display: flex;
     font-family: myFontBold;
@@ -400,14 +396,12 @@
     overflow: hidden;
     align-items: center;
     height: 100vh;
-    padding-top: 15vh;
   }
 
   .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-left: -45px;
   }
 
   .logo-container.start {
@@ -446,7 +440,6 @@
   .btn {
     font-size: 3.5rem;
     cursor: pointer;
-    padding-top: 15vh;
   }
 
   .btn.start {
@@ -532,17 +525,19 @@
   .app-btns {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 1vh;
     padding-right: 0.25rem;
     align-self: flex-end;
+    justify-content: start;
   }
 
   .btn-svgs {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    padding: 0;
   }
 
   .app-svgs {
