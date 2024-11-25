@@ -133,7 +133,9 @@ export function Game({ allCards, setCurrentPage }) {
           alt="King's emote"
           className={showKingEmote ? "king-emote visible" : "king-emote"}
         />
-        <img src={king} id="king" alt="Clash Royale King" />
+        {!mediaQuery.matches && (
+          <img src={king} id="king" alt="Clash Royale King" />
+        )}
       </div>
       {cards && (
         <div className="cards" ref={cardsDiv}>
@@ -150,41 +152,98 @@ export function Game({ allCards, setCurrentPage }) {
           ))}
         </div>
       )}
-
-      {cards && (
+      {!mediaQuery.matches ? (
         <div className="right-side">
-          <div className="score-board-div">
-            <p>Best Score: {bestScore}</p>
-            <p>Score: {score}</p>
-          </div>
+          {cards && (
+            <>
+              <div className="score-board-div">
+                <p>Best Score: {bestScore}</p>
+                <p>Score: {score}</p>
+              </div>
 
-          <div className="app-btns">
-            <div className="btn-svgs">
-              <img className="app-svgs" src={soundOn} alt="sound on button" />
-              <img className="app-svgs" src={musicOn} alt="music on button" />
-              <img
-                className="app-svgs"
-                src={question}
-                alt="sound on button"
-                onClick={() => setShowToolTip(!showToolTip)}
-              />
-              <img
-                className="app-svgs"
-                src={exit}
-                alt="exit button"
-                onClick={() => setCurrentPage("home")}
-              />
-            </div>
-            <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
-              <p>Don't click on the same card twice!</p>
-              <img
-                src={kingToolTip}
-                id="king-tool-tip"
-                alt="Clash Royale king pointing up icon"
-              />
-            </div>
-          </div>
+              <div className="app-btns">
+                <div className="btn-svgs">
+                  <img
+                    className="app-svgs"
+                    src={soundOn}
+                    alt="sound on button"
+                  />
+                  <img
+                    className="app-svgs"
+                    src={musicOn}
+                    alt="music on button"
+                  />
+                  <img
+                    className="app-svgs"
+                    src={question}
+                    alt="sound on button"
+                    onClick={() => setShowToolTip(!showToolTip)}
+                  />
+                  <img
+                    className="app-svgs"
+                    src={exit}
+                    alt="exit button"
+                    onClick={() => setCurrentPage("home")}
+                  />
+                </div>
+                <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+                  <p>Don't click on the same card twice!</p>
+                  <img
+                    src={kingToolTip}
+                    id="king-tool-tip"
+                    alt="Clash Royale king pointing up icon"
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </div>
+      ) : (
+        <>
+          {cards && (
+            <>
+              <div className="score-board-div">
+                <p>Best Score: {bestScore}</p>
+                <p>Score: {score}</p>
+              </div>
+
+              <div className="app-btns">
+                <div className="btn-svgs">
+                  <img
+                    className="app-svgs"
+                    src={soundOn}
+                    alt="sound on button"
+                  />
+                  <img
+                    className="app-svgs"
+                    src={musicOn}
+                    alt="music on button"
+                  />
+                  <img
+                    className="app-svgs"
+                    src={question}
+                    alt="sound on button"
+                    onClick={() => setShowToolTip(!showToolTip)}
+                  />
+                  <img
+                    className="app-svgs"
+                    src={exit}
+                    alt="exit button"
+                    onClick={() => setCurrentPage("home")}
+                  />
+                </div>
+                <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+                  <p>Don't click on the same card twice!</p>
+                  <img
+                    src={kingToolTip}
+                    id="king-tool-tip"
+                    alt="Clash Royale king pointing up icon"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+        </>
       )}
     </div>
   );
