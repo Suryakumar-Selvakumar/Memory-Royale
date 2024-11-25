@@ -17,9 +17,9 @@ function App() {
     <>
       {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
       {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
-      {currentPage === "game" && (
+      {/* {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
-      )}
+      )} */}
     </>
   );
 }

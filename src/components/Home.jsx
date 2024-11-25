@@ -2,7 +2,6 @@ import "../styles/Home.css";
 import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import background from "../assets/backgrounds/Game-Background.jpg";
-import mobileBackground from "../assets/backgrounds/Game-Background-Mobile.png";
 import soundOn from "../assets/svg/sound-on.svg";
 import soundOff from "../assets/svg/sound-off.svg";
 import musicOn from "../assets/svg/music-on.svg";
@@ -31,7 +30,7 @@ export function Home({ setCurrentPage }) {
 
   return (
     <div
-      className={!mediaQuery.matches ? "home-page" : "home-page--mobile"}
+      className="home-page"
       style={{
         background: `url(${!mediaQuery.matches && background})`,
         backgroundSize: !mediaQuery.matches && "cover",

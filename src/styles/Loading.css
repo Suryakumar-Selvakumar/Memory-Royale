@@ -1,18 +1,17 @@
 .loading-page {
-  display: grid;
+  display: flex;
   font-family: myFontBold;
   min-height: 100vh;
-  align-items: end;
+  align-items: center;
   box-sizing: border-box;
-  padding-top: 10vh;
-  grid-template-rows: 1fr 1fr;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.loading-page .logo-container {
-  place-self: center;
+.loading-page .logo,
+.loading-page #crown-icon {
   position: relative;
-  left: -2.4vw;
-  top: -4.9vh;
+  top: -0.25vh;
 }
 
 .loading-div {
@@ -58,5 +57,36 @@
 
   100% {
     width: 100%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 768px) {
+  #progress {
+    text-shadow: 0 0 5px black;
+    -webkit-text-stroke: 2.5px rgb(0, 0, 0);
+    font-size: 2rem;
+  }
+
+  .loading-page {
+    padding-top: 10vh;
+  }
+
+  .loading-page .logo,
+  .loading-page #crown-icon {
+    position: relative;
+    top: -0.35vh;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1700px) {
+  .loading-page .logo,
+  .loading-page #crown-icon {
+    position: relative;
+    top: -0.225vh;
+  }
+
+  .loading-page .logo:first-child {
+    position: relative;
+    top: -0.2vh;
   }
 }

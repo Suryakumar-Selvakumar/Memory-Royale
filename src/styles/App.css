@@ -80,10 +80,4 @@ body {
     background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
     overflow: hidden;
   }
-
-  #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
 }

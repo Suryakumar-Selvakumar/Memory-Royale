@@ -1,5 +1,6 @@
 import "../styles/Loading.css";
 import background from "../assets/backgrounds/Game-Background.jpg";
+import mobileBackground from "../assets/backgrounds/Game-Background-Mobile.png";
 import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import { useEffect, useRef, useState } from "react";
@@ -27,17 +28,21 @@ export function Loading({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => {
       if (progress == 100) {
-        setCurrentPage("game");
+        // setCurrentPage("game");
       }
     }, 250);
   }, [progress, setCurrentPage]);
+
+  const mediaQuery = window.matchMedia(
+    "(min-width: 360px) and (max-width: 1700px)"
+  );
 
   return (
     <div
       className="loading-page"
       style={{
-        background: `url(${background})`,
-        backgroundSize: "100vw 100vh",
+        background: `url(${!mediaQuery.matches && background})`,
+        backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
       <div className="logo-container">
