@@ -58,7 +58,7 @@ export function Home({ setCurrentPage }) {
         >
           <span>Play</span>
         </button>
-        <div className="btn-svgs">
+        <div className={showAnimation? "btn-svgs start" : "btn-svgs"}>
           <img className="app-svgs" src={soundOn} alt="sound on button" />
           <img className="app-svgs" src={musicOn} alt="music on button" />
           <img

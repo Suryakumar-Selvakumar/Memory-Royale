@@ -6,6 +6,7 @@
   overflow: hidden;
   align-items: center;
   height: 100vh;
+  --translate-height: 325px;
 }
 
 .logo-container {
@@ -164,6 +165,21 @@
   padding-top: 1rem;
   justify-content: flex-end;
   align-items: flex-end;
+  position: relative;
+}
+
+.btn-svgs.start {
+  animation: pop-up 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
+}
+
+@keyframes pop-up {
+  0% {
+    transform: translateY(var(--translate-height));
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .app-svgs {
@@ -212,7 +228,8 @@
     overflow: hidden;
     align-items: center;
     height: 100vh;
-    padding-top: 20vh;
+    padding-top: 10vh;
+    --translate-height: 200px;
   }
 
   .logo-container {
@@ -357,8 +374,13 @@
     align-items: flex-end;
   }
 
+  .btn-svgs.start {
+    animation: pop-up 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
+  }
+
   .app-svgs {
     width: 40px;
+    cursor: pointer;
   }
 
   .tool-tip {
@@ -404,6 +426,7 @@
     overflow: hidden;
     align-items: center;
     height: 100vh;
+    --translate-height: 275px;
   }
 
   .logo-container {
