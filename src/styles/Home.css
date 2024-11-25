@@ -13,6 +13,7 @@
   align-items: center;
   gap: 0.75rem;
   margin-left: -5rem;
+  padding-top: 10vh;
 }
 
 .logo-container.start {
@@ -52,6 +53,7 @@
   font-size: 4rem;
   cursor: pointer;
   position: relative;
+  align-self: center;
 }
 
 .btn.start {
@@ -152,6 +154,7 @@
   padding-bottom: 1rem;
   padding-right: 0.5rem;
   align-self: flex-end;
+  width: 100%;
 }
 
 .btn-svgs {
@@ -159,6 +162,8 @@
   flex-direction: column;
   gap: 1rem;
   padding-top: 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .app-svgs {
@@ -207,12 +212,14 @@
     overflow: hidden;
     align-items: center;
     height: 100vh;
+    padding-top: 20vh;
   }
 
   .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    padding-left: 2rem;
   }
 
   .logo-container.start {
@@ -340,13 +347,14 @@
     gap: 0.25rem;
     padding-bottom: 1vh;
     padding-right: 0.25rem;
-    align-self: flex-end;
   }
 
   .btn-svgs {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .app-svgs {
@@ -458,6 +466,7 @@
     background: none;
     outline: none;
     border: none;
+    align-self: center;
   }
 
   .btn-shadow::before {
@@ -525,12 +534,10 @@
   .app-btns {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.25rem;
     padding-bottom: 1vh;
     padding-right: 0.25rem;
-    align-self: flex-end;
-    justify-content: start;
+    align-items: flex-end;
   }
 
   .btn-svgs {

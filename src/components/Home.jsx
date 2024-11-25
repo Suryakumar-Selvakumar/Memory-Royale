@@ -47,17 +47,17 @@ export function Home({ setCurrentPage }) {
         </div>
         <img id="crown-icon" src={crownIcon} alt="a books icon" />
       </div>
-      <button
-        className={
-          showAnimation
-            ? "btn btn-shadow btn-shadow--orange btn-pushable start"
-            : "btn btn-shadow btn-shadow--orange btn-pushable"
-        }
-        onClick={() => startGame()}
-      >
-        <span>Play</span>
-      </button>
       <div className="app-btns">
+        <button
+          className={
+            showAnimation
+              ? "btn btn-shadow btn-shadow--orange btn-pushable start"
+              : "btn btn-shadow btn-shadow--orange btn-pushable"
+          }
+          onClick={() => startGame()}
+        >
+          <span>Play</span>
+        </button>
         <div className="btn-svgs">
           <img className="app-svgs" src={soundOn} alt="sound on button" />
           <img className="app-svgs" src={musicOn} alt="music on button" />
