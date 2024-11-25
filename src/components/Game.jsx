@@ -5,7 +5,7 @@ import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/icons/King-Image.png";
 import { setKingEmote } from "../utils/kingImageSetter";
-import royalBackground from "../assets/backgrounds/Game-Background.jpg";
+import background from "../assets/backgrounds/Game-Background.jpg";
 import soundOn from "../assets/svg/sound-on.svg";
 import soundOff from "../assets/svg/sound-off.svg";
 import musicOn from "../assets/svg/music-on.svg";
@@ -115,12 +115,16 @@ export function Game({ allCards, setCurrentPage }) {
     }
   }
 
+  const mediaQuery = window.matchMedia(
+    "(min-width: 360px) and (max-width: 1700px)"
+  );
+
   return (
     <div
       className="game-page"
       style={{
-        background: `url(${royalBackground}) no-repeat`,
-        backgroundSize: "100vw 100vh",
+        background: `url(${!mediaQuery.matches && background})`,
+        backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
       <div className="king-div">

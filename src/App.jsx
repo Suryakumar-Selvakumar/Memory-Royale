@@ -11,15 +11,15 @@ const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("game");
 
   return (
     <>
-      {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
-      {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
-      {/* {currentPage === "game" && (
+      {/* {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
+      {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />} */}
+      {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
-      )} */}
+      )}
     </>
   );
 }

@@ -28,7 +28,7 @@ export function Loading({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => {
       if (progress == 100) {
-        // setCurrentPage("game");
+        setCurrentPage("game");
       }
     }, 250);
   }, [progress, setCurrentPage]);
