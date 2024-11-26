@@ -43,6 +43,11 @@ export function Game({ allCards, setCurrentPage }) {
     localStorage.setItem("best-score", JSON.stringify(bestScore));
   }, [bestScore]);
 
+  // MediaQuery to switch to mobile/tablet layout
+  const mediaQuery = window.matchMedia(
+    "(min-width: 360px) and (max-width: 1700px)"
+  );
+
   // useEffect to fetch from the API
   useEffect(() => {
     setTimeout(() => setShowKingEmote(true), 250);
@@ -63,7 +68,7 @@ export function Game({ allCards, setCurrentPage }) {
     setTimeout(() => {
       (async () => {
         const cardsArray = await allCards;
-        setCards(getRandomCards(cardsArray));
+        setCards(getRandomCards(cardsArray, !mediaQuery.matches ? 12 : 8));
         setShowCard(true);
       })();
     }, 500);
@@ -114,10 +119,6 @@ export function Game({ allCards, setCurrentPage }) {
       setShowCard(false);
     }
   }
-
-  const mediaQuery = window.matchMedia(
-    "(min-width: 360px) and (max-width: 1700px)"
-  );
 
   return (
     <div
