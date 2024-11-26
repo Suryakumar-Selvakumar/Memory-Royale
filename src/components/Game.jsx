@@ -68,7 +68,7 @@ export function Game({ allCards, setCurrentPage }) {
     setTimeout(() => {
       (async () => {
         const cardsArray = await allCards;
-        setCards(getRandomCards(cardsArray, !mediaQuery.matches ? 12 : 8));
+        setCards(getRandomCards(cardsArray, !mediaQuery.matches ? 12 : 6));
         setShowCard(true);
       })();
     }, 500);
@@ -128,17 +128,19 @@ export function Game({ allCards, setCurrentPage }) {
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
-      <div className="king-div">
-        <img
-          src={setKingEmote(score, bestScore, gameOver, gameStartState)}
-          alt="King's emote"
-          className={showKingEmote ? "king-emote visible" : "king-emote"}
-        />
-        {!mediaQuery.matches && (
-          <img src={king} id="king" alt="Clash Royale King" />
-        )}
-      </div>
-      {cards && (
+      {!mediaQuery.matches && (
+        <div className="king-div">
+          <img
+            src={setKingEmote(score, bestScore, gameOver, gameStartState)}
+            alt="King's emote"
+            className={showKingEmote ? "king-emote visible" : "king-emote"}
+          />
+          {!mediaQuery.matches && (
+            <img src={king} id="king" alt="Clash Royale King" />
+          )}
+        </div>
+      )}
+      {cards && !mediaQuery.matches && (
         <div className="cards" ref={cardsDiv}>
           {cards.map((card) => (
             <Card
@@ -207,7 +209,33 @@ export function Game({ allCards, setCurrentPage }) {
                 <p>Best Score: {bestScore}</p>
                 <p>Score: {score}</p>
               </div>
-
+              <div className="king-div">
+                <img
+                  src={setKingEmote(score, bestScore, gameOver, gameStartState)}
+                  alt="King's emote"
+                  className={
+                    showKingEmote ? "king-emote visible" : "king-emote"
+                  }
+                />
+                {!mediaQuery.matches && (
+                  <img src={king} id="king" alt="Clash Royale King" />
+                )}
+              </div>
+              {cards && (
+                <div className="cards" ref={cardsDiv}>
+                  {cards.map((card) => (
+                    <Card
+                      key={card.id}
+                      card={card}
+                      handleCardClick={handleCardClick}
+                      cardsFlipped={cardsFlipped}
+                      showCard={showCard}
+                      gameStartState={gameStartState}
+                      gameOver={gameOver}
+                    />
+                  ))}
+                </div>
+              )}
               <div className="app-btns">
                 <div className="btn-svgs">
                   <img
@@ -233,14 +261,14 @@ export function Game({ allCards, setCurrentPage }) {
                     onClick={() => setCurrentPage("home")}
                   />
                 </div>
-                <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
-                  <p>Don't click on the same card twice!</p>
-                  <img
-                    src={kingToolTip}
-                    id="king-tool-tip"
-                    alt="Clash Royale king pointing up icon"
-                  />
-                </div>
+              </div>
+              <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+                <p>Don't click on the same card twice!</p>
+                <img
+                  src={kingToolTip}
+                  id="king-tool-tip"
+                  alt="Clash Royale king pointing up icon"
+                />
               </div>
             </>
           )}

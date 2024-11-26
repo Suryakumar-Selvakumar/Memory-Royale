@@ -118,21 +118,32 @@
 }
 
 @media (min-width: 360px) and (max-width: 768px) {
-  .game-page {
+  /* .game-page {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
     height: 100%;
     width: 100%;
     font-family: myFontRegular;
-    align-items: start;
     grid-template-areas:
       "score-board"
       "king-div"
       "cards"
       "app-btns";
-    grid-template-rows: max-content;
+    grid-template-rows: auto;
     padding-top: 1rem;
     gap: 1rem;
+  } */
+
+  .game-page {
+    height: 100vh;
+    width: 100%;
+    font-family: myFontRegular;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-rows: none;
+    padding-top: 1rem;
   }
 
   .score-board-div {
@@ -146,7 +157,7 @@
     background-color: rgb(23, 23, 23, 0.8);
     border-radius: 15px;
     grid-area: score-board;
-    margin: 0 auto;
+    width: 250px;
   }
 
   .score-board-div > p:last-child {
@@ -155,11 +166,11 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 125px);
-    width: 40vw;
+    grid-template-columns: repeat(3, 85px);
+    width: 100%;
     height: max-content;
     place-items: center;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
     column-gap: 0rem;
     padding-top: 0rem;
     margin-left: 0rem;
@@ -175,6 +186,7 @@
     gap: 0rem;
     margin-left: 0rem;
     grid-area: king-div;
+    width: inherit;
   }
 
   .king-emote {
@@ -205,10 +217,12 @@
   .game-page .app-btns {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     gap: 0.25rem;
     padding-bottom: 1vh;
     padding-right: 0.25rem;
+    justify-content: flex-end;
+    width: inherit;
   }
 
   .game-page .btn-svgs {
@@ -219,8 +233,12 @@
     align-items: flex-end;
   }
 
-  .btn-svgs.start {
+  .game-page .btn-svgs.start {
     animation: pop-up 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
+  }
+
+  .game-page .app-svgs {
+    width: 35px;
   }
 }
 
