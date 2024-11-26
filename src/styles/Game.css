@@ -96,9 +96,11 @@
 @media (min-width: 360px) and (max-width: 768px) {
   .game-page {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     height: 100%;
+    width: 100%;
     font-family: myFontRegular;
+    align-items: center;
     grid-template-areas:
       "score-board"
       "king-div"
@@ -106,17 +108,35 @@
       "app-btns";
   }
 
+  .score-board-div {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    padding: 1rem;
+    color: white;
+    background-color: rgb(23, 23, 23, 0.8);
+    border-radius: 15px;
+    grid-area: score-board;
+    width: 325px;
+  }
+
+  .score-board-div > p:last-child {
+    margin-right: 1.25rem;
+  }
+
   .cards {
     display: grid;
-    grid-template-columns: repeat(4, 175px);
+    grid-template-columns: repeat(3, 125px);
     width: 40vw;
     height: max-content;
     place-items: center;
     row-gap: 1.5rem;
-    column-gap: 3rem;
+    column-gap: 0rem;
     padding-top: 5rem;
-    margin-left: 4rem;
-    margin-top: 7.5vh;
+    margin-left: 0rem;
+    margin-top: 0vh;
     grid-area: cards;
   }
 
@@ -151,23 +171,6 @@
     transform-origin: bottom;
     animation: emote-pop-up 500ms ease;
     opacity: 1;
-  }
-
-  .score-board-div {
-    font-size: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    padding: 1rem;
-    color: white;
-    background-color: rgb(23, 23, 23, 0.8);
-    border-radius: 15px;
-    margin-right: 1rem;
-    grid-area: score-board;
-  }
-
-  .score-board-div > p:last-child {
-    margin-right: 1.25rem;
   }
 
   .app-btns {
