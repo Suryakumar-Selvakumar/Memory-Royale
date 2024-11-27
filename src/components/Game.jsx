@@ -95,7 +95,7 @@ export function Game({ allCards, setCurrentPage }) {
       setScore(0);
 
       setTimeout(() => {
-        // Game Reset Logic, probably port it to Restart modal if you make it
+        // Game Reset Logic
         setShowKingEmote(false);
         setGameOver(false);
 
@@ -238,35 +238,39 @@ export function Game({ allCards, setCurrentPage }) {
               )}
               <div className="app-btns">
                 <div className="btn-svgs">
-                  <img
-                    className="app-svgs"
-                    src={soundOn}
-                    alt="sound on button"
-                  />
-                  <img
-                    className="app-svgs"
-                    src={musicOn}
-                    alt="music on button"
-                  />
-                  <img
-                    className="app-svgs"
-                    src={question}
-                    alt="sound on button"
-                    onClick={() => setShowToolTip(!showToolTip)}
-                  />
-                  <img
-                    className="app-svgs"
-                    src={exit}
-                    alt="exit button"
-                    onClick={() => setCurrentPage("home")}
-                  />
+                  <div>
+                    <img
+                      className="app-svgs"
+                      src={soundOn}
+                      alt="sound on button"
+                    />
+                    <img
+                      className="app-svgs"
+                      src={musicOn}
+                      alt="music on button"
+                    />
+                  </div>
+                  <div>
+                    <img
+                      className="app-svgs"
+                      src={question}
+                      alt="sound on button"
+                      onClick={() => setShowToolTip(!showToolTip)}
+                    />
+                    <img
+                      className="app-svgs"
+                      src={exit}
+                      alt="exit button"
+                      onClick={() => setCurrentPage("home")}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
+              <div className={showToolTip ? "tool-tip-game visible" : "tool-tip-game"}>
                 <p>Don't click on the same card twice!</p>
                 <img
                   src={kingToolTip}
-                  id="king-tool-tip"
+                  id="king-tool-tip-game"
                   alt="Clash Royale king pointing up icon"
                 />
               </div>
