@@ -118,21 +118,6 @@
 }
 
 @media (min-width: 360px) and (max-width: 768px) {
-  /* .game-page {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
-    width: 100%;
-    font-family: myFontRegular;
-    grid-template-areas:
-      "score-board"
-      "king-div"
-      "cards"
-      "app-btns";
-    grid-template-rows: auto;
-    padding-top: 1rem;
-    gap: 1rem;
-  } */
 
   .game-page {
     height: 100vh;

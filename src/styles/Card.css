@@ -186,8 +186,8 @@
     position: relative;
     --base-delay: 250ms;
     --base-column-offset: 0px;
-    --base-row-offset: 300px;
-    --card-width: 75px;
+    --base-row-offset: 400px;
+    --card-width: 80px;
     --card-height: 125px;
     width: var(--card-width);
     height: var(--card-height);
@@ -214,7 +214,7 @@
   #card-image {
     object-fit: cover;
     object-position: 0 -12.5px;
-    height: calc(var(--card-height) - 30px);
+    height: calc(var(--card-height) - 25px);
     width: calc(var(--card-width));
   }
 
@@ -233,11 +233,11 @@
   .card-back {
     z-index: 1;
     position: relative;
-    top: -115px;
+    top: -120px;
     font-size: 5rem;
     line-height: 0.1;
     width: var(--card-width);
-    min-height: calc(var(--card-height) - 10px);
+    min-height: calc(var(--card-height) - 5px);
     border-radius: 10px;
     transform: rotateY(180deg);
     transition: transform 500ms ease, border 300ms ease, box-shadow 485ms ease;
@@ -246,16 +246,24 @@
   }
 
   .card-back.first-draw {
-    box-shadow: inset 0 0 30px grey, 0 0 15px grey;
-    border: 5px solid black;
+    box-shadow: inset 0 0 30px grey, 0 0 10px grey;
+    border: 2.5px solid black;
     width: var(--card-width);
-    min-height: calc(var(--card-height));
+    min-height: calc(var(--card-height) - 5px);
   }
 
   .card-back.flipped {
-    box-shadow: inset 0 0 30px grey, 0 0 15px grey;
-    border: 5px solid black;
+    box-shadow: inset 0 0 30px grey, 0 0 10px grey;
+    border: 2.5px solid black;
     width: var(--card-width);
-    min-height: calc(var(--card-height));
+    min-height: calc(var(--card-height) - 5px);
+  }
+
+  .card:nth-child(n + 5):nth-child(-n + 8) {
+    --row-height-offset: calc(var(--base-row-offset) * 0.25);
+  }
+
+  .card:nth-child(n + 9):nth-child(-n + 12) {
+    --row-height-offset: calc(var(--base-row-offset) * 0.5);
   }
 }
