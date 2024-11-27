@@ -8,10 +8,6 @@ export function Card({
   gameStartState,
   gameOver,
 }) {
-  // MediaQuery to switch to mobile/tablet layout
-  const mediaQuery = window.matchMedia(
-    "(min-width: 360px) and (max-width: 1700px)"
-  );
 
   let cardShadow;
   if (card.rarity && card.rarity === "common") {
