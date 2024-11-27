@@ -185,8 +185,8 @@
   .card {
     position: relative;
     --base-delay: 250ms;
-    --base-column-offset: -275px;
-    --base-row-offset: 500px;
+    --base-column-offset: 0px;
+    --base-row-offset: 300px;
     --card-width: 75px;
     --card-height: 125px;
     width: var(--card-width);

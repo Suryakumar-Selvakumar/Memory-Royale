@@ -68,7 +68,7 @@ export function Game({ allCards, setCurrentPage }) {
     setTimeout(() => {
       (async () => {
         const cardsArray = await allCards;
-        setCards(getRandomCards(cardsArray, !mediaQuery.matches ? 12 : 6));
+        setCards(getRandomCards(cardsArray, 12));
         setShowCard(true);
       })();
     }, 500);
