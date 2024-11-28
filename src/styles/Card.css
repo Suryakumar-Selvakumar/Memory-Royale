@@ -260,7 +260,7 @@
   }
 
   .card:nth-child(n + 5):nth-child(-n + 8) {
-    --row-height-offset: calc(var(--base-row-offset) * 0.25);
+    --row-height-offset: calc(var(--base-row-offset) * 0.5);
   }
 
   .card:nth-child(n + 9):nth-child(-n + 12) {
@@ -292,14 +292,14 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1700px) {
+@media (min-width: 768px) and (max-width: 819px) {
   .card {
     position: relative;
     --base-delay: 250ms;
-    --base-column-offset: 0px;
-    --base-row-offset: 400px;
-    --card-width: 85px;
-    --card-height: 130px;
+    --base-column-offset: 100px;
+    --base-row-offset: 500px;
+    --card-width: 125px;
+    --card-height: 200px;
     width: var(--card-width);
     height: var(--card-height);
     display: flex;
@@ -324,7 +324,7 @@
 
   #card-image {
     object-fit: cover;
-    object-position: 0 -15px;
+    object-position: 0 -17.5px;
     height: calc(var(--card-height) - 25px);
     width: calc(var(--card-width));
   }
@@ -334,9 +334,9 @@
     border-radius: 10px;
     width: inherit;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 1rem;
     position: relative;
-    top: 0px;
+    top: -12.5px;
     overflow: hidden;
     height: 20px;
   }
@@ -344,11 +344,11 @@
   .card-back {
     z-index: 1;
     position: relative;
-    top: -120px;
+    top: -195px;
     font-size: 5rem;
     line-height: 0.1;
     width: var(--card-width);
-    min-height: calc(var(--card-height) - 10px);
+    min-height: calc(var(--card-height) - 5px);
     border-radius: 10px;
     transform: rotateY(180deg);
     transition: transform 500ms ease, border 400ms ease, box-shadow 485ms ease;
@@ -358,23 +358,158 @@
 
   .card-back.first-draw {
     box-shadow: inset 0 0 30px grey, 0 0 10px grey;
-    border: 2.5px solid black;
+    border: 4px solid black;
     width: var(--card-width);
     min-height: calc(var(--card-height) - 10px);
   }
 
   .card-back.flipped {
     box-shadow: inset 0 0 30px grey, 0 0 10px grey;
-    border: 2.5px solid black;
+    border: 4px solid black;
     width: var(--card-width);
     min-height: calc(var(--card-height) - 10px);
   }
 
   .card:nth-child(n + 5):nth-child(-n + 8) {
-    --row-height-offset: calc(var(--base-row-offset) * 0.25);
+    --row-height-offset: calc(var(--base-row-offset) * 0.5);
   }
 
   .card:nth-child(n + 9):nth-child(-n + 12) {
     --row-height-offset: calc(var(--base-row-offset) * 0.5);
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(5),
+  .card:nth-child(9) {
+    --column-width-offset: calc(var(--base-column-offset) * 2);
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(6),
+  .card:nth-child(10) {
+    --column-width-offset: calc(var(--base-column-offset));
+  }
+
+  .card:nth-child(3),
+  .card:nth-child(7),
+  .card:nth-child(11) {
+    --column-width-offset: calc(- var(--base-column-offset));
+  }
+
+  .card:nth-child(4),
+  .card:nth-child(8),
+  .card:nth-child(12) {
+    --column-width-offset: calc(var(--base-column-offset) * -2);
+  }
+}
+
+@media (min-width: 820px) and (max-width: 1700px) {
+  .card {
+    position: relative;
+    --base-delay: 250ms;
+    --base-column-offset: 100px;
+    --base-row-offset: 750px;
+    --card-width: 200px;
+    --card-height: 275px;
+    width: var(--card-width);
+    height: var(--card-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-front {
+    height: var(--card-height);
+    width: var(--card-width);
+    z-index: 2;
+    position: relative;
+    border-radius: 15px;
+    padding: 0;
+    margin: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #card-image {
+    object-fit: cover;
+    object-position: 0 -37.5px;
+    height: calc(var(--card-height) - 30px);
+    width: calc(var(--card-width));
+  }
+
+  #card-name {
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    width: inherit;
+    text-align: center;
+    font-size: 1.5rem;
+    position: relative;
+    top: -7.5px;
+    overflow: hidden;
+    height: 30px;
+  }
+
+  .card-back {
+    z-index: 1;
+    position: relative;
+    top: -275px;
+    font-size: 10rem;
+    line-height: 0.1;
+    width: var(--card-width);
+    min-height: calc(var(--card-height));
+    border-radius: 15px;
+    transform: rotateY(180deg);
+    transition: transform 500ms ease, border 400ms ease, box-shadow 485ms ease;
+    box-shadow: inset 0 0 0px grey, 0 0 0px grey;
+    border: 0px solid white;
+  }
+
+  .card-back.first-draw {
+    box-shadow: inset 0 0 30px grey, 0 0 10px grey;
+    border: 5px solid black;
+    width: var(--card-width);
+    min-height: calc(var(--card-height));
+  }
+
+  .card-back.flipped {
+    box-shadow: inset 0 0 30px grey, 0 0 10px grey;
+    border: 5px solid black;
+    width: var(--card-width);
+    min-height: calc(var(--card-height));
+  }
+
+  .card:nth-child(n + 5):nth-child(-n + 8) {
+    --row-height-offset: calc(var(--base-row-offset) * 0.75);
+  }
+
+  .card:nth-child(n + 9):nth-child(-n + 12) {
+    --row-height-offset: calc(var(--base-row-offset) * 0.5);
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(5),
+  .card:nth-child(9) {
+    --column-width-offset: calc(var(--base-column-offset) * 2);
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(6),
+  .card:nth-child(10) {
+    --column-width-offset: calc(var(--base-column-offset));
+  }
+
+  .card:nth-child(3),
+  .card:nth-child(7),
+  .card:nth-child(11) {
+    --column-width-offset: calc(- var(--base-column-offset));
+  }
+
+  .card:nth-child(4),
+  .card:nth-child(8),
+  .card:nth-child(12) {
+    --column-width-offset: calc(var(--base-column-offset) * -2);
   }
 }
