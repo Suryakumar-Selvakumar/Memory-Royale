@@ -185,7 +185,7 @@
   .card {
     position: relative;
     --base-delay: 250ms;
-    --base-column-offset: 0px;
+    --base-column-offset: 50px;
     --base-row-offset: 400px;
     --card-width: 85px;
     --card-height: 130px;
@@ -265,6 +265,30 @@
 
   .card:nth-child(n + 9):nth-child(-n + 12) {
     --row-height-offset: calc(var(--base-row-offset) * 0.5);
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(5),
+  .card:nth-child(9) {
+    --column-width-offset: calc(var(--base-column-offset) * 2);
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(6),
+  .card:nth-child(10) {
+    --column-width-offset: calc(var(--base-column-offset));
+  }
+
+  .card:nth-child(3),
+  .card:nth-child(7),
+  .card:nth-child(11) {
+    --column-width-offset: calc(- var(--base-column-offset));
+  }
+
+  .card:nth-child(4),
+  .card:nth-child(8),
+  .card:nth-child(12) {
+    --column-width-offset: calc(var(--base-column-offset) * -2);
   }
 }
 
