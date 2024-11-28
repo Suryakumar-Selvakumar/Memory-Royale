@@ -28,6 +28,9 @@ export function Game({ allCards, setCurrentPage }) {
   const [showKingEmote, setShowKingEmote] = useState(false);
   const [gameStartState, setGameStartState] = useState(true);
   const [showToolTip, setShowToolTip] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(
+    window.matchMedia("(min-width: 360px) and (max-width: 1700px)").matches
+  );
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -37,16 +40,12 @@ export function Game({ allCards, setCurrentPage }) {
 
   // DOM Refs
   const cardsDiv = useRef(null);
+  const gamePageRef = useRef(null);
 
   // Latest bestScore gets saved in localStorage every time it changes
   useEffect(() => {
     localStorage.setItem("best-score", JSON.stringify(bestScore));
   }, [bestScore]);
-
-  // MediaQuery to switch to mobile/tablet layout
-  const mediaQuery = window.matchMedia(
-    "(min-width: 360px) and (max-width: 1700px)"
-  );
 
   // useEffect to fetch from the API
   useEffect(() => {
@@ -61,6 +60,25 @@ export function Game({ allCards, setCurrentPage }) {
       setShowKingEmote(false);
       setGameStartState(false);
     }, 4250);
+
+    const mediaQuery = window.matchMedia(
+      "(min-width: 360px) and (max-width: 1700px)"
+    );
+
+    const handleMediaChange = (event) => {
+      setIsMobileView(event.matches);
+
+      if (!event.matches) {
+        // scroll to top when going back to PC layout
+        window.scrollTo(0, 0);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaChange);
+    };
   }, []);
 
   // useEffect to update cards at the end of a round
@@ -123,24 +141,26 @@ export function Game({ allCards, setCurrentPage }) {
   return (
     <div
       className="game-page"
+      ref={gamePageRef}
       style={{
-        background: `url(${!mediaQuery.matches && background})`,
-        backgroundSize: !mediaQuery.matches && "cover",
+        background: `url(${!isMobileView && background})`,
+        backgroundSize: !isMobileView && "cover",
+        backgroundRepeat: "repeat",
       }}
     >
-      {!mediaQuery.matches && (
+      {!isMobileView && (
         <div className="king-div">
           <img
             src={setKingEmote(score, bestScore, gameOver, gameStartState)}
             alt="King's emote"
             className={showKingEmote ? "king-emote visible" : "king-emote"}
           />
-          {!mediaQuery.matches && (
+          {!isMobileView && (
             <img src={king} id="king" alt="Clash Royale King" />
           )}
         </div>
       )}
-      {cards && !mediaQuery.matches && (
+      {cards && !isMobileView && (
         <div className="cards" ref={cardsDiv}>
           {cards.map((card) => (
             <Card
@@ -155,7 +175,7 @@ export function Game({ allCards, setCurrentPage }) {
           ))}
         </div>
       )}
-      {!mediaQuery.matches ? (
+      {!isMobileView ? (
         <div className="right-side">
           {cards && (
             <>
@@ -217,7 +237,7 @@ export function Game({ allCards, setCurrentPage }) {
                     showKingEmote ? "king-emote visible" : "king-emote"
                   }
                 />
-                {!mediaQuery.matches && (
+                {!isMobileView && (
                   <img src={king} id="king" alt="Clash Royale King" />
                 )}
               </div>
@@ -266,7 +286,11 @@ export function Game({ allCards, setCurrentPage }) {
                   </div>
                 </div>
               </div>
-              <div className={showToolTip ? "tool-tip-game visible" : "tool-tip-game"}>
+              <div
+                className={
+                  showToolTip ? "tool-tip-game visible" : "tool-tip-game"
+                }
+              >
                 <p>Don't click on the same card twice!</p>
                 <img
                   src={kingToolTip}
