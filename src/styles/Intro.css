@@ -11,20 +11,56 @@
 }
 
 .intro-logo {
-  font-size: 5rem;
+  font-size: 7rem;
+  padding: 3rem 6rem;
+  border-radius: 40%;
+  opacity: 0;
+}
+
+.intro-logo.start {
+  animation: intro 1.75s linear;
 }
 
 .intro-logo > p {
-  line-height: 1;
+  line-height: 0.75;
 }
 
 .last-logo-line {
   width: max-content;
   display: flex;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 @font-face {
   font-family: myFontIntro;
   src: url("../fonts/logo-font.otf");
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  10% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 0rem rgba(255, 255, 255, 0.8));
+  }
+
+  20% {
+    filter: drop-shadow(0 0 5rem rgba(255, 255, 255, 0.8));
+  }
+
+  70% {
+    filter: drop-shadow(0 0 0rem rgba(255, 255, 255, 0.8));
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

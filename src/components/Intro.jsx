@@ -1,14 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Intro.css";
 
-export function Intro(setCurrentPage) {
+export function Intro({ setCurrentPage }) {
+  const [showLogo, setShowLogo] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => {setCurrentPage("loading")}, 2000);
+    setTimeout(() => {
+      setShowLogo(false);
+    //   setCurrentPage("loading");
+    }, 3000);
   }, []);
 
   return (
     <div className="intro-page">
-      <div className="intro-logo">
+      <div className={showLogo ? "intro-logo start" : "intro-logo"}>
         <p>SUP</p>
         <p>ERC</p>
         <p className="last-logo-line">
