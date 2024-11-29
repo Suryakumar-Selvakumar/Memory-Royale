@@ -10,7 +10,7 @@ import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import { useEffect, useState } from "react";
 
-export function Home({ setCurrentPage }) {
+export function Home({ setCurrentPage, setFirstLoad }) {
   const [showToolTip, setShowToolTip] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
 
@@ -20,7 +20,10 @@ export function Home({ setCurrentPage }) {
 
   function startGame() {
     setTimeout(() => {
-      if (!showAnimation) setCurrentPage("loading");
+      if (!showAnimation) {
+        setFirstLoad(false);
+        setCurrentPage("loading");
+      }
     }, 500);
   }
 
@@ -57,7 +60,7 @@ export function Home({ setCurrentPage }) {
         >
           <span>Play</span>
         </button>
-        <div className={showAnimation? "btn-svgs start" : "btn-svgs"}>
+        <div className={showAnimation ? "btn-svgs start" : "btn-svgs"}>
           <img className="app-svgs" src={soundOn} alt="sound on button" />
           <img className="app-svgs" src={musicOn} alt="music on button" />
           <img

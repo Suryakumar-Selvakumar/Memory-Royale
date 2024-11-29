@@ -13,12 +13,19 @@ const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
 function App() {
   const [currentPage, setCurrentPage] = useState("intro");
+  const [firstLoad, setFirstLoad] = useState(false);
 
   return (
     <>
-      {currentPage === "intro" && <Intro setCurrentPage={setCurrentPage} />}
-      {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
-      {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
+      {currentPage === "intro" && (
+        <Intro setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} />
+      )}
+      {currentPage === "home" && (
+        <Home setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} />
+      )}
+      {currentPage === "loading" && (
+        <Loading setCurrentPage={setCurrentPage} firstLoad={firstLoad} />
+      )}
       {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
       )}

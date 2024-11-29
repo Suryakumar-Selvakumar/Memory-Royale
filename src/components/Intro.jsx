@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "../styles/Intro.css";
 
-export function Intro({ setCurrentPage }) {
+export function Intro({ setCurrentPage, setFirstLoad }) {
   const [showLogo, setShowLogo] = useState(true);
 
   useEffect(() => {
+    setFirstLoad(true);
     setTimeout(() => {
       setShowLogo(false);
-      //   setCurrentPage("loading");
+      setCurrentPage("loading");
     }, 3000);
   }, []);
 

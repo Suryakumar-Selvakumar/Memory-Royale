@@ -5,7 +5,7 @@ import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import { useEffect, useRef, useState } from "react";
 
-export function Loading({ setCurrentPage }) {
+export function Loading({ setCurrentPage, firstLoad }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -28,7 +28,11 @@ export function Loading({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => {
       if (progress == 100) {
-        setCurrentPage("game");
+        if (firstLoad) {
+          setCurrentPage("home");
+        } else {
+          setCurrentPage("game");
+        }
       }
     }, 250);
   }, [progress, setCurrentPage]);
@@ -41,7 +45,7 @@ export function Loading({ setCurrentPage }) {
     <div
       className="loading-page"
       style={{
-        background: `url(${mediaQuery.matches ? background : mobileBackground})`,
+        background: `url(${!mediaQuery.matches && background})`,
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
