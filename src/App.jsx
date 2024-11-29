@@ -12,7 +12,7 @@ const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("game");
+  const [currentPage, setCurrentPage] = useState("intro");
 
   return (
     <>

@@ -1,0 +1,30 @@
+.intro-page {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  font-family: myFontIntro;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.intro-logo {
+  font-size: 5rem;
+}
+
+.intro-logo > p {
+  line-height: 1;
+}
+
+.last-logo-line {
+  width: max-content;
+  display: flex;
+  gap: 0.3rem;
+}
+
+@font-face {
+  font-family: myFontIntro;
+  src: url("../fonts/logo-font.otf");
+}

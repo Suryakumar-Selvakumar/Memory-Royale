@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import "../styles/Intro.css";
 
 export function Intro(setCurrentPage) {
   useEffect(() => {
-    setTimeout(() => setCurrentPage("loading"), 2000);
+    setTimeout(() => {setCurrentPage("loading")}, 2000);
   }, []);
 
   return (
@@ -10,7 +11,11 @@ export function Intro(setCurrentPage) {
       <div className="intro-logo">
         <p>SUP</p>
         <p>ERC</p>
-        <p>ELL</p>
+        <p className="last-logo-line">
+          <span>E</span>
+          <span>L</span>
+          <span>L</span>
+        </p>
       </div>
     </div>
   );
