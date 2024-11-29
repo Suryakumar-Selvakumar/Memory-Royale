@@ -145,7 +145,6 @@ export function Game({ allCards, setCurrentPage }) {
       style={{
         background: `url(${!isMobileView && background})`,
         backgroundSize: !isMobileView && "cover",
-        backgroundRepeat: "repeat",
       }}
     >
       {!isMobileView && (

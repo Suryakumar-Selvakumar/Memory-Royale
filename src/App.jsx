@@ -4,6 +4,7 @@ import "./styles/App.css";
 import { Home } from "./components/Home";
 import { Loading } from "./components/Loading";
 import { fetchCards } from "./services/api";
+import { Intro } from "./components/Intro";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -15,8 +16,9 @@ function App() {
 
   return (
     <>
-      {/* {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
-      {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />} */}
+      {currentPage === "intro" && <Intro setCurrentPage={setCurrentPage} />}
+      {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
+      {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
       {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
       )}
