@@ -7,12 +7,12 @@ export function Intro({ setCurrentPage }) {
   useEffect(() => {
     setTimeout(() => {
       setShowLogo(false);
-    //   setCurrentPage("loading");
+      //   setCurrentPage("loading");
     }, 3000);
   }, []);
 
   return (
-    <div className="intro-page">
+    <div className="intro-page" style={{ backgroundColor: "black" }}>
       <div className={showLogo ? "intro-logo start" : "intro-logo"}>
         <p>SUP</p>
         <p>ERC</p>

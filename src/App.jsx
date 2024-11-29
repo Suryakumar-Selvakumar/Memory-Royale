@@ -17,11 +17,11 @@ function App() {
   return (
     <>
       {currentPage === "intro" && <Intro setCurrentPage={setCurrentPage} />}
-      {/* {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
+      {currentPage === "home" && <Home setCurrentPage={setCurrentPage} />}
       {currentPage === "loading" && <Loading setCurrentPage={setCurrentPage} />}
       {currentPage === "game" && (
         <Game setCurrentPage={setCurrentPage} allCards={allCards} />
-      )} */}
+      )}
     </>
   );
 }

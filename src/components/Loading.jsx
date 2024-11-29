@@ -41,7 +41,7 @@ export function Loading({ setCurrentPage }) {
     <div
       className="loading-page"
       style={{
-        background: `url(${!mediaQuery.matches && background})`,
+        background: `url(${mediaQuery.matches ? background : mobileBackground})`,
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >

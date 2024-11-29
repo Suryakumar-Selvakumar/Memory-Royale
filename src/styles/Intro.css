@@ -1,5 +1,4 @@
 .intro-page {
-  background-color: black;
   height: 100vh;
   width: 100%;
   font-family: myFontIntro;
@@ -8,6 +7,7 @@
   align-items: center;
   justify-content: center;
   color: white;
+  --drop-shadow-size: 5rem;
 }
 
 .intro-logo {
@@ -15,6 +15,7 @@
   padding: 3rem 6rem;
   border-radius: 40%;
   opacity: 0;
+  --drop-shadow-size: 5rem;
 }
 
 .intro-logo.start {
@@ -49,7 +50,7 @@
   }
 
   20% {
-    filter: drop-shadow(0 0 5rem rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0 0 var(--drop-shadow-size) rgba(255, 255, 255, 0.8));
   }
 
   70% {
@@ -63,4 +64,23 @@
   100% {
     opacity: 0;
   }
+}
+
+@media (min-width: 360px) and (max-width: 768px) {
+  .intro-logo {
+    font-size: 5rem;
+    padding: 2rem 4rem;
+    border-radius: 40%;
+    opacity: 0;
+    --drop-shadow-size: 4rem;
+  }
+
+  .last-logo-line {
+    width: max-content;
+    display: flex;
+    gap: 0.25rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1700px) {
 }
