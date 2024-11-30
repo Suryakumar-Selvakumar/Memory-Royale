@@ -14,7 +14,7 @@ import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 
-export function Game({ allCards, setCurrentPage }) {
+export function Game({ allCards, setCurrentPage, play, stop }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
 
   // ScoreBoard states
@@ -31,6 +31,9 @@ export function Game({ allCards, setCurrentPage }) {
   const [isMobileView, setIsMobileView] = useState(
     window.matchMedia("(min-width: 360px) and (max-width: 1700px)").matches
   );
+
+  // Sound states
+  const [gameSound, setGameSound] = useState(false);
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -76,8 +79,11 @@ export function Game({ allCards, setCurrentPage }) {
 
     mediaQuery.addEventListener("change", handleMediaChange);
 
+    // window.addEventListener("DOMContentLoaded", () => play());
+
     return () => {
       mediaQuery.removeEventListener("change", handleMediaChange);
+      // window.removeEventListener("click", () => play());
     };
   }, []);
 
@@ -146,6 +152,11 @@ export function Game({ allCards, setCurrentPage }) {
         background: `url(${!isMobileView && background})`,
         backgroundSize: !isMobileView && "cover",
       }}
+      onMouseEnter={() => {
+        play();
+        setGameSound(true);
+      }}
+      // onMouseLeave={() => stop()}
     >
       {!isMobileView && (
         <div className="king-div">
@@ -194,6 +205,15 @@ export function Game({ allCards, setCurrentPage }) {
                     className="app-svgs"
                     src={musicOn}
                     alt="music on button"
+                    onClick={() => {
+                      if (gameSound) {
+                        stop();
+                        setGameSound(false);
+                      } else {
+                        play();
+                        setGameSound(true);
+                      }
+                    }}
                   />
                   <img
                     className="app-svgs"
