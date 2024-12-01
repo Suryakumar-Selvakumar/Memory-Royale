@@ -9,6 +9,7 @@ import gameMusic from "./assets/sounds/Game-Music.mp3";
 import useSound from "use-sound";
 import introSound from "./assets/sounds/Intro-Sound.mp3";
 import introLoadingSound from "./assets/sounds/Intro-Loading-Sound.mp3";
+import gameLoadingSound from "./assets/sounds/Game-Loading-Sound.mp3";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -37,6 +38,7 @@ function App() {
           setCurrentPage={setCurrentPage}
           firstLoad={firstLoad}
           introLoadingSound={introLoadingSound}
+          gameLoadingSound={gameLoadingSound}
         />
       )}
       {currentPage === "game" && (

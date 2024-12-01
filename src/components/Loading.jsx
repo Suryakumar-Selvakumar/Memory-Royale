@@ -5,7 +5,12 @@ import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import { useEffect, useRef, useState } from "react";
 
-export function Loading({ setCurrentPage, firstLoad, introLoadingSound }) {
+export function Loading({
+  setCurrentPage,
+  firstLoad,
+  introLoadingSound,
+  gameLoadingSound,
+}) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -43,7 +48,10 @@ export function Loading({ setCurrentPage, firstLoad, introLoadingSound }) {
 
   return (
     <>
-      <audio src={firstLoad && introLoadingSound} autoPlay={true}></audio>
+      <audio
+        src={firstLoad ? introLoadingSound : gameLoadingSound}
+        autoPlay={true}
+      ></audio>
 
       <div
         className="loading-page"
