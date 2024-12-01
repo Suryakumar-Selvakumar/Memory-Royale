@@ -16,16 +16,16 @@ const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 function App() {
   const [currentPage, setCurrentPage] = useState("intro");
   const [firstLoad, setFirstLoad] = useState(false);
-  const [play, { stop }] = useSound(gameMusic, {
-    interrupt: true,
-  });
+  // const [play, { stop }] = useSound(gameMusic, {
+  //   interrupt: true,
+  // });
 
   return (
     <>
       {currentPage === "intro" && (
         <Intro setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} />
       )}
-      {currentPage === "home" && (
+      {/* {currentPage === "home" && (
         <Home setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} />
       )}
       {currentPage === "loading" && (
@@ -35,10 +35,9 @@ function App() {
         <Game
           setCurrentPage={setCurrentPage}
           allCards={allCards}
-          play={play}
-          stop={stop}
+          gameMusic={gameMusic}
         />
-      )}
+      )} */}
     </>
   );
 }

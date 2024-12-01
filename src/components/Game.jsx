@@ -14,8 +14,9 @@ import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 
-export function Game({ allCards, setCurrentPage, play, stop }) {
+export function Game({ allCards, setCurrentPage, gameMusic }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
+  const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
 
   // ScoreBoard states
   const [score, setScore] = useState(0);
@@ -33,7 +34,9 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
   );
 
   // Sound states
-  const [gameSound, setGameSound] = useState(false);
+  const [gameSound, setGameSound] = useState(
+    storedGameSound ? storedGameSound : true
+  );
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -49,6 +52,11 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
   useEffect(() => {
     localStorage.setItem("best-score", JSON.stringify(bestScore));
   }, [bestScore]);
+
+  // UseEffect to add gameSound to localStorage
+  useEffect(() => {
+    localStorage.setItem("game-sound", JSON.stringify(gameSound));
+  }, [gameSound]);
 
   // useEffect to fetch from the API
   useEffect(() => {
@@ -79,11 +87,8 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
 
     mediaQuery.addEventListener("change", handleMediaChange);
 
-    // window.addEventListener("DOMContentLoaded", () => play());
-
     return () => {
       mediaQuery.removeEventListener("change", handleMediaChange);
-      // window.removeEventListener("click", () => play());
     };
   }, []);
 
@@ -145,139 +150,54 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
   }
 
   return (
-    <div
-      className="game-page"
-      ref={gamePageRef}
-      style={{
-        background: `url(${!isMobileView && background})`,
-        backgroundSize: !isMobileView && "cover",
-      }}
-      onMouseEnter={() => {
-        play();
-        setGameSound(true);
-      }}
-      // onMouseLeave={() => stop()}
-    >
-      {!isMobileView && (
-        <div className="king-div">
-          <img
-            src={setKingEmote(score, bestScore, gameOver, gameStartState)}
-            alt="King's emote"
-            className={showKingEmote ? "king-emote visible" : "king-emote"}
-          />
-          {!isMobileView && (
-            <img src={king} id="king" alt="Clash Royale King" />
-          )}
-        </div>
-      )}
-      {cards && !isMobileView && (
-        <div className="cards" ref={cardsDiv}>
-          {cards.map((card) => (
-            <Card
-              key={card.id}
-              card={card}
-              handleCardClick={handleCardClick}
-              cardsFlipped={cardsFlipped}
-              showCard={showCard}
-              gameStartState={gameStartState}
-              gameOver={gameOver}
+    <>
+      {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
+      <div
+        className="game-page"
+        ref={gamePageRef}
+        style={{
+          background: `url(${!isMobileView && background})`,
+          backgroundSize: !isMobileView && "cover",
+        }}
+      >
+        {!isMobileView && (
+          <div className="king-div">
+            <img
+              src={setKingEmote(score, bestScore, gameOver, gameStartState)}
+              alt="King's emote"
+              className={showKingEmote ? "king-emote visible" : "king-emote"}
             />
-          ))}
-        </div>
-      )}
-      {!isMobileView ? (
-        <div className="right-side">
-          {cards && (
-            <>
-              <div className="score-board-div">
-                <p>Best Score: {bestScore}</p>
-                <p>Score: {score}</p>
-              </div>
+            {!isMobileView && (
+              <img src={king} id="king" alt="Clash Royale King" />
+            )}
+          </div>
+        )}
+        {cards && !isMobileView && (
+          <div className="cards" ref={cardsDiv}>
+            {cards.map((card) => (
+              <Card
+                key={card.id}
+                card={card}
+                handleCardClick={handleCardClick}
+                cardsFlipped={cardsFlipped}
+                showCard={showCard}
+                gameStartState={gameStartState}
+                gameOver={gameOver}
+              />
+            ))}
+          </div>
+        )}
+        {!isMobileView ? (
+          <div className="right-side">
+            {cards && (
+              <>
+                <div className="score-board-div">
+                  <p>Best Score: {bestScore}</p>
+                  <p>Score: {score}</p>
+                </div>
 
-              <div className="app-btns">
-                <div className="btn-svgs">
-                  <img
-                    className="app-svgs"
-                    src={soundOn}
-                    alt="sound on button"
-                  />
-                  <img
-                    className="app-svgs"
-                    src={musicOn}
-                    alt="music on button"
-                    onClick={() => {
-                      if (gameSound) {
-                        stop();
-                        setGameSound(false);
-                      } else {
-                        play();
-                        setGameSound(true);
-                      }
-                    }}
-                  />
-                  <img
-                    className="app-svgs"
-                    src={question}
-                    alt="sound on button"
-                    onClick={() => setShowToolTip(!showToolTip)}
-                  />
-                  <img
-                    className="app-svgs"
-                    src={exit}
-                    alt="exit button"
-                    onClick={() => setCurrentPage("home")}
-                  />
-                </div>
-                <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
-                  <p>Don't click on the same card twice!</p>
-                  <img
-                    src={kingToolTip}
-                    id="king-tool-tip"
-                    alt="Clash Royale king pointing up icon"
-                  />
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      ) : (
-        <>
-          {cards && (
-            <>
-              <div className="score-board-div">
-                <p>Best Score: {bestScore}</p>
-                <p>Score: {score}</p>
-              </div>
-              <div className="king-div">
-                <img
-                  src={setKingEmote(score, bestScore, gameOver, gameStartState)}
-                  alt="King's emote"
-                  className={
-                    showKingEmote ? "king-emote visible" : "king-emote"
-                  }
-                />
-                {!isMobileView && (
-                  <img src={king} id="king" alt="Clash Royale King" />
-                )}
-              </div>
-              {cards && (
-                <div className="cards" ref={cardsDiv}>
-                  {cards.map((card) => (
-                    <Card
-                      key={card.id}
-                      card={card}
-                      handleCardClick={handleCardClick}
-                      cardsFlipped={cardsFlipped}
-                      showCard={showCard}
-                      gameStartState={gameStartState}
-                      gameOver={gameOver}
-                    />
-                  ))}
-                </div>
-              )}
-              <div className="app-btns">
-                <div className="btn-svgs">
-                  <div>
+                <div className="app-btns">
+                  <div className="btn-svgs">
                     <img
                       className="app-svgs"
                       src={soundOn}
@@ -285,11 +205,10 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
                     />
                     <img
                       className="app-svgs"
-                      src={musicOn}
+                      src={gameSound ? musicOn : musicOff}
                       alt="music on button"
+                      onClick={() => setGameSound(!gameSound)}
                     />
-                  </div>
-                  <div>
                     <img
                       className="app-svgs"
                       src={question}
@@ -303,24 +222,108 @@ export function Game({ allCards, setCurrentPage, play, stop }) {
                       onClick={() => setCurrentPage("home")}
                     />
                   </div>
+                  <div
+                    className={showToolTip ? "tool-tip visible" : "tool-tip"}
+                  >
+                    <p>Don't click on the same card twice!</p>
+                    <img
+                      src={kingToolTip}
+                      id="king-tool-tip"
+                      alt="Clash Royale king pointing up icon"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div
-                className={
-                  showToolTip ? "tool-tip-game visible" : "tool-tip-game"
-                }
-              >
-                <p>Don't click on the same card twice!</p>
-                <img
-                  src={kingToolTip}
-                  id="king-tool-tip-game"
-                  alt="Clash Royale king pointing up icon"
-                />
-              </div>
-            </>
-          )}
-        </>
-      )}
-    </div>
+              </>
+            )}
+          </div>
+        ) : (
+          <>
+            {cards && (
+              <>
+                <div className="score-board-div">
+                  <p>Best Score: {bestScore}</p>
+                  <p>Score: {score}</p>
+                </div>
+                <div className="king-div">
+                  <img
+                    src={setKingEmote(
+                      score,
+                      bestScore,
+                      gameOver,
+                      gameStartState
+                    )}
+                    alt="King's emote"
+                    className={
+                      showKingEmote ? "king-emote visible" : "king-emote"
+                    }
+                  />
+                  {!isMobileView && (
+                    <img src={king} id="king" alt="Clash Royale King" />
+                  )}
+                </div>
+                {cards && (
+                  <div className="cards" ref={cardsDiv}>
+                    {cards.map((card) => (
+                      <Card
+                        key={card.id}
+                        card={card}
+                        handleCardClick={handleCardClick}
+                        cardsFlipped={cardsFlipped}
+                        showCard={showCard}
+                        gameStartState={gameStartState}
+                        gameOver={gameOver}
+                      />
+                    ))}
+                  </div>
+                )}
+                <div className="app-btns">
+                  <div className="btn-svgs">
+                    <div>
+                      <img
+                        className="app-svgs"
+                        src={soundOn}
+                        alt="sound on button"
+                      />
+                      <img
+                        className="app-svgs"
+                        src={gameSound ? musicOn : musicOff}
+                        alt="music on button"
+                        onClick={() => setGameSound(!gameSound)}
+                      />
+                    </div>
+                    <div>
+                      <img
+                        className="app-svgs"
+                        src={question}
+                        alt="sound on button"
+                        onClick={() => setShowToolTip(!showToolTip)}
+                      />
+                      <img
+                        className="app-svgs"
+                        src={exit}
+                        alt="exit button"
+                        onClick={() => setCurrentPage("home")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={
+                    showToolTip ? "tool-tip-game visible" : "tool-tip-game"
+                  }
+                >
+                  <p>Don't click on the same card twice!</p>
+                  <img
+                    src={kingToolTip}
+                    id="king-tool-tip-game"
+                    alt="Clash Royale king pointing up icon"
+                  />
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 }
