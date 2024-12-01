@@ -44,6 +44,7 @@ export function Loading({ setCurrentPage, firstLoad, introLoadingSound }) {
   return (
     <>
       <audio src={firstLoad && introLoadingSound} autoPlay={true}></audio>
+
       <div
         className="loading-page"
         style={{
@@ -51,6 +52,7 @@ export function Loading({ setCurrentPage, firstLoad, introLoadingSound }) {
           backgroundSize: !mediaQuery.matches && "cover",
         }}
       >
+        <div className="fade-overlay"></div>
         <div className="logo-container">
           <div className="icons">
             <img

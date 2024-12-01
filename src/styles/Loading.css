@@ -6,6 +6,30 @@
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
+  /* animation: screen-fade-in 1s ease;
+  transform-origin: center; */
+  position: relative;
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: screen-fade-in 1s ease;
+  background-color: black;
+  animation-fill-mode: forwards;
+}
+
+@keyframes screen-fade-in {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .loading-page .logo,
