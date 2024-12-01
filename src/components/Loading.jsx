@@ -5,7 +5,7 @@ import magicItems from "../assets/icons/Magic-Items-Icon.png";
 import crownIcon from "../assets/icons/Crown-Icon.png";
 import { useEffect, useRef, useState } from "react";
 
-export function Loading({ setCurrentPage, firstLoad }) {
+export function Loading({ setCurrentPage, firstLoad, introLoadingSound }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -42,29 +42,36 @@ export function Loading({ setCurrentPage, firstLoad }) {
   );
 
   return (
-    <div
-      className="loading-page"
-      style={{
-        background: `url(${!mediaQuery.matches && background})`,
-        backgroundSize: !mediaQuery.matches && "cover",
-      }}
-    >
-      <div className="logo-container">
-        <div className="icons">
-          <img src={magicItems} id="magic-items" alt="an icon of magic items" />
+    <>
+      <audio src={firstLoad && introLoadingSound} autoPlay={true}></audio>
+      <div
+        className="loading-page"
+        style={{
+          background: `url(${!mediaQuery.matches && background})`,
+          backgroundSize: !mediaQuery.matches && "cover",
+        }}
+      >
+        <div className="logo-container">
+          <div className="icons">
+            <img
+              src={magicItems}
+              id="magic-items"
+              alt="an icon of magic items"
+            />
+          </div>
+          <div className="logo-name">
+            <p className="logo">MEMORY</p>
+            <p className="logo">ROYALE</p>
+          </div>
+          <img id="crown-icon" src={crownIcon} alt="a books icon" />
         </div>
-        <div className="logo-name">
-          <p className="logo">MEMORY</p>
-          <p className="logo">ROYALE</p>
+        <div className="loading-div">
+          <span id="progress">{progress}%</span>
+          <div className="loading-wrapper">
+            <span id="loader"></span>
+          </div>
         </div>
-        <img id="crown-icon" src={crownIcon} alt="a books icon" />
       </div>
-      <div className="loading-div">
-        <span id="progress">{progress}%</span>
-        <div className="loading-wrapper">
-          <span id="loader"></span>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
