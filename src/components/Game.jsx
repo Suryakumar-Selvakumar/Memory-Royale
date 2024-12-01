@@ -219,7 +219,7 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
                       className="app-svgs"
                       src={exit}
                       alt="exit button"
-                      onClick={() => setCurrentPage("home")}
+                      onClick={() => setCurrentPage("intro")}
                     />
                   </div>
                   <div
@@ -302,7 +302,7 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
                         className="app-svgs"
                         src={exit}
                         alt="exit button"
-                        onClick={() => setCurrentPage("home")}
+                        onClick={() => setCurrentPage("intro")}
                       />
                     </div>
                   </div>
