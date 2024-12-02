@@ -10,6 +10,7 @@ import useSound from "use-sound";
 import introSound from "./assets/sounds/Intro-Sound.mp3";
 import introLoadingSound from "./assets/sounds/Intro-Loading-Sound.mp3";
 import gameLoadingSound from "./assets/sounds/Game-Loading-Sound.mp3";
+import playSound from "./assets/sounds/Play-Sound.mp3"
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -19,7 +20,7 @@ const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 function App() {
   const [currentPage, setCurrentPage] = useState("intro");
   const [firstLoad, setFirstLoad] = useState(false);
-  // const [play, { stop }] = useSound(introSound);
+  const [playBtnSound] = useSound(playSound);
 
   return (
     <>
@@ -31,7 +32,7 @@ function App() {
         />
       )}
       {currentPage === "home" && (
-        <Home setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} />
+        <Home setCurrentPage={setCurrentPage} setFirstLoad={setFirstLoad} playBtnSound={playBtnSound} />
       )}
       {currentPage === "loading" && (
         <Loading

@@ -10,7 +10,7 @@ import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import { useEffect, useState } from "react";
 
-export function Home({ setCurrentPage, setFirstLoad }) {
+export function Home({ setCurrentPage, setFirstLoad, playBtnSound }) {
   const [showToolTip, setShowToolTip] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
 
@@ -19,12 +19,14 @@ export function Home({ setCurrentPage, setFirstLoad }) {
   }, []);
 
   function startGame() {
+    playBtnSound();
+
     setTimeout(() => {
       if (!showAnimation) {
         setFirstLoad(false);
         setCurrentPage("loading");
       }
-    }, 500);
+    }, 1750);
   }
 
   const mediaQuery = window.matchMedia(
