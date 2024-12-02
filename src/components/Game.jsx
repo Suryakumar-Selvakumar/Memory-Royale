@@ -13,6 +13,7 @@ import musicOff from "../assets/svg/music-off.svg";
 import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
+import cross from "../assets/svg/cross.svg";
 
 export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -227,7 +228,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
                     />
                     <img
                       className="app-svgs"
-                      src={question}
+                      src={!showToolTip ? question : cross}
                       alt="tool-tip button"
                       onClick={() => {
                         setShowToolTip(!showToolTip);
@@ -323,7 +324,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
                     <div>
                       <img
                         className="app-svgs"
-                        src={question}
+                        src={!showToolTip ? question : cross}
                         alt="tool-tip button"
                         onClick={() => {
                           setShowToolTip(!showToolTip);

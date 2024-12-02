@@ -7,6 +7,7 @@ import soundOff from "../assets/svg/sound-off.svg";
 import musicOn from "../assets/svg/music-on.svg";
 import musicOff from "../assets/svg/music-off.svg";
 import question from "../assets/svg/question.svg";
+import cross from "../assets/svg/cross.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import { useEffect, useState } from "react";
 
@@ -111,7 +112,7 @@ export function Home({
           />
           <img
             className="app-svgs"
-            src={question}
+            src={!showToolTip ? question : cross}
             alt="tool-tip button"
             onClick={() => {
               setShowToolTip(!showToolTip);
