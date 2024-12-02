@@ -13,6 +13,7 @@ import gameLoadingSound from "./assets/sounds/Game-Loading-Sound.mp3";
 import playSound from "./assets/sounds/Play-Sound.mp3";
 import homeMusic from "./assets/sounds/Home-Music.mp3";
 import buttonSound from "./assets/sounds/Button-Sound.mp3";
+import homeIntroSound from "./assets/sounds/Home-Intro-Sound.mp3";
 
 const apiToken = import.meta.env.VITE_API_KEY;
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
@@ -41,6 +42,7 @@ function App() {
           playBtnSound={playBtnSound}
           homeMusic={homeMusic}
           btnSound={btnSound}
+          homeIntroSound={homeIntroSound}
         />
       )}
       {currentPage === "loading" && (

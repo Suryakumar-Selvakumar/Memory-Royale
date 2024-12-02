@@ -17,6 +17,7 @@ export function Home({
   playBtnSound,
   homeMusic,
   btnSound,
+  homeIntroSound,
 }) {
   const [showToolTip, setShowToolTip] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
@@ -69,6 +70,7 @@ export function Home({
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
+      <audio src={homeIntroSound} autoPlay={true}></audio>
       {gameSound && <audio src={homeMusic} loop={true} autoPlay={true}></audio>}
       <div
         className={showAnimation ? "logo-container start" : "logo-container"}
