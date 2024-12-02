@@ -14,10 +14,8 @@ import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 
-export function Game({ allCards, setCurrentPage, gameMusic }) {
+export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
-  const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
-  console.log(storedGameSound);
 
   // ScoreBoard states
   const [score, setScore] = useState(0);
@@ -35,8 +33,13 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
   );
 
   // Sound states
+  const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
   const [gameSound, setGameSound] = useState(
     storedGameSound !== undefined ? storedGameSound : true
+  );
+  const storedGameVolume = JSON.parse(localStorage.getItem("game-volume"));
+  const [gameVolume, setGameVolume] = useState(
+    storedGameVolume !== undefined ? storedGameVolume : true
   );
 
   //Card states
@@ -58,6 +61,11 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
   useEffect(() => {
     localStorage.setItem("game-sound", JSON.stringify(gameSound));
   }, [gameSound]);
+
+  // UseEffect to add gameVolume to localStorage
+  useEffect(() => {
+    localStorage.setItem("game-volume", JSON.stringify(gameVolume));
+  }, [gameVolume]);
 
   // useEffect to fetch from the API
   useEffect(() => {
@@ -201,26 +209,39 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
                   <div className="btn-svgs">
                     <img
                       className="app-svgs"
-                      src={soundOn}
+                      src={gameVolume ? soundOn : soundOff}
                       alt="sound on button"
+                      onClick={() => {
+                        setGameVolume(!gameVolume);
+                        gameVolume && btnSound();
+                      }}
                     />
                     <img
                       className="app-svgs"
                       src={gameSound ? musicOn : musicOff}
                       alt="music on button"
-                      onClick={() => setGameSound(!gameSound)}
+                      onClick={() => {
+                        setGameSound(!gameSound);
+                        gameVolume && btnSound();
+                      }}
                     />
                     <img
                       className="app-svgs"
                       src={question}
-                      alt="sound on button"
-                      onClick={() => setShowToolTip(!showToolTip)}
+                      alt="tool-tip button"
+                      onClick={() => {
+                        setShowToolTip(!showToolTip);
+                        gameVolume && btnSound();
+                      }}
                     />
                     <img
                       className="app-svgs"
                       src={exit}
                       alt="exit button"
-                      onClick={() => setCurrentPage("intro")}
+                      onClick={() => {
+                        setCurrentPage("intro");
+                        gameVolume && btnSound();
+                      }}
                     />
                   </div>
                   <div
@@ -282,28 +303,41 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
                     <div>
                       <img
                         className="app-svgs"
-                        src={soundOn}
+                        src={gameVolume ? soundOn : soundOff}
                         alt="sound on button"
+                        onClick={() => {
+                          setGameVolume(!gameVolume);
+                          gameVolume && btnSound();
+                        }}
                       />
                       <img
                         className="app-svgs"
                         src={gameSound ? musicOn : musicOff}
                         alt="music on button"
-                        onClick={() => setGameSound(!gameSound)}
+                        onClick={() => {
+                          setGameSound(!gameSound);
+                          gameVolume && btnSound();
+                        }}
                       />
                     </div>
                     <div>
                       <img
                         className="app-svgs"
                         src={question}
-                        alt="sound on button"
-                        onClick={() => setShowToolTip(!showToolTip)}
+                        alt="tool-tip button"
+                        onClick={() => {
+                          setShowToolTip(!showToolTip);
+                          gameVolume && btnSound();
+                        }}
                       />
                       <img
                         className="app-svgs"
                         src={exit}
                         alt="exit button"
-                        onClick={() => setCurrentPage("intro")}
+                        onClick={() => {
+                          setCurrentPage("intro");
+                          gameVolume && btnSound();
+                        }}
                       />
                     </div>
                   </div>

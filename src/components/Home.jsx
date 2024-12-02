@@ -15,18 +15,24 @@ export function Home({
   setFirstLoad,
   playBtnSound,
   homeMusic,
+  btnSound,
 }) {
   const [showToolTip, setShowToolTip] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
 
+  // Game Sounds
   const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
   const [gameSound, setGameSound] = useState(
     storedGameSound !== undefined ? storedGameSound : true
   );
 
+  const storedGameVolume = JSON.parse(localStorage.getItem("game-volume"));
+  const [gameVolume, setGameVolume] = useState(
+    storedGameVolume !== undefined ? storedGameVolume : true
+  );
+
   useEffect(() => {
     setTimeout(() => setShowAnimation(false), 1500);
-    
   }, []);
 
   // UseEffect to add gameSound to localStorage
@@ -34,8 +40,13 @@ export function Home({
     localStorage.setItem("game-sound", JSON.stringify(gameSound));
   }, [gameSound]);
 
+  // UseEffect to add gameVolume to localStorage
+  useEffect(() => {
+    localStorage.setItem("game-volume", JSON.stringify(gameVolume));
+  }, [gameVolume]);
+
   function startGame() {
-    playBtnSound();
+    gameVolume && playBtnSound();
 
     setTimeout(() => {
       if (!showAnimation) {
@@ -80,18 +91,32 @@ export function Home({
           <span>Play</span>
         </button>
         <div className={showAnimation ? "btn-svgs start" : "btn-svgs"}>
-          <img className="app-svgs" src={soundOn} alt="sound on button" />
+          <img
+            className="app-svgs"
+            src={gameVolume ? soundOn : soundOff}
+            alt="sound on button"
+            onClick={() => {
+              setGameVolume(!gameVolume);
+              gameVolume && btnSound();
+            }}
+          />
           <img
             className="app-svgs"
             src={gameSound ? musicOn : musicOff}
             alt="music on button"
-            onClick={() => setGameSound(!gameSound)}
+            onClick={() => {
+              setGameSound(!gameSound);
+              gameVolume && btnSound();
+            }}
           />
           <img
             className="app-svgs"
             src={question}
-            alt="sound on button"
-            onClick={() => setShowToolTip(!showToolTip)}
+            alt="tool-tip button"
+            onClick={() => {
+              setShowToolTip(!showToolTip);
+              gameVolume && btnSound();
+            }}
           />
         </div>
         <div className={showToolTip ? "tool-tip visible" : "tool-tip"}>
