@@ -17,6 +17,7 @@ import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 export function Game({ allCards, setCurrentPage, gameMusic }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
   const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
+  console.log(storedGameSound);
 
   // ScoreBoard states
   const [score, setScore] = useState(0);
@@ -35,7 +36,7 @@ export function Game({ allCards, setCurrentPage, gameMusic }) {
 
   // Sound states
   const [gameSound, setGameSound] = useState(
-    storedGameSound ? storedGameSound : true
+    storedGameSound !== undefined ? storedGameSound : true
   );
 
   //Card states

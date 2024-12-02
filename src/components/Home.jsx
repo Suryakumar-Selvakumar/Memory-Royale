@@ -10,13 +10,29 @@ import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import { useEffect, useState } from "react";
 
-export function Home({ setCurrentPage, setFirstLoad, playBtnSound }) {
+export function Home({
+  setCurrentPage,
+  setFirstLoad,
+  playBtnSound,
+  homeMusic,
+}) {
   const [showToolTip, setShowToolTip] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
 
+  const storedGameSound = JSON.parse(localStorage.getItem("game-sound"));
+  const [gameSound, setGameSound] = useState(
+    storedGameSound !== undefined ? storedGameSound : true
+  );
+
   useEffect(() => {
     setTimeout(() => setShowAnimation(false), 1500);
+    
   }, []);
+
+  // UseEffect to add gameSound to localStorage
+  useEffect(() => {
+    localStorage.setItem("game-sound", JSON.stringify(gameSound));
+  }, [gameSound]);
 
   function startGame() {
     playBtnSound();
@@ -41,6 +57,7 @@ export function Home({ setCurrentPage, setFirstLoad, playBtnSound }) {
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
+      {gameSound && <audio src={homeMusic} loop={true} autoPlay={true}></audio>}
       <div
         className={showAnimation ? "logo-container start" : "logo-container"}
       >
@@ -64,7 +81,12 @@ export function Home({ setCurrentPage, setFirstLoad, playBtnSound }) {
         </button>
         <div className={showAnimation ? "btn-svgs start" : "btn-svgs"}>
           <img className="app-svgs" src={soundOn} alt="sound on button" />
-          <img className="app-svgs" src={musicOn} alt="music on button" />
+          <img
+            className="app-svgs"
+            src={gameSound ? musicOn : musicOff}
+            alt="music on button"
+            onClick={() => setGameSound(!gameSound)}
+          />
           <img
             className="app-svgs"
             src={question}
