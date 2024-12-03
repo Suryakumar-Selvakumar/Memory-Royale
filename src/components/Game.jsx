@@ -4,7 +4,7 @@ import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/icons/King-Image.png";
-import { setKingEmote } from "../utils/kingImageSetter";
+import { setKingEmote } from "../utils/kingEmoteSetter";
 import background from "../assets/backgrounds/Game-Background.jpg";
 import soundOn from "../assets/svg/sound-on.svg";
 import soundOff from "../assets/svg/sound-off.svg";

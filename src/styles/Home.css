@@ -18,7 +18,7 @@
 }
 
 .logo-container.start {
-  transform-origin: 54% bottom;
+  transform-origin: 54% center;
   animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
 }
 
@@ -240,7 +240,7 @@
   }
 
   .logo-container.start {
-    transform-origin: 58% bottom;
+    transform-origin: 58% center;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
@@ -436,7 +436,7 @@
   }
 
   .logo-container.start {
-    transform-origin: 54% bottom;
+    transform-origin: 54% center;
     animation: grow 1.5s cubic-bezier(0.3, 0.22, 0.34, 0.95);
   }
 
