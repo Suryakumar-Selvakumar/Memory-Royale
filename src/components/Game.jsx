@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
+import useSound from "use-sound";
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
 import king from "../assets/icons/King-Image.png";
-import { setKingEmote } from "../utils/kingEmoteSetter";
+import { setKingEmote, setKingEmoteSound } from "../utils/kingEmoteSetter";
 import background from "../assets/backgrounds/Game-Background.jpg";
 import soundOn from "../assets/svg/sound-on.svg";
 import soundOff from "../assets/svg/sound-off.svg";
@@ -14,6 +15,7 @@ import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import cross from "../assets/svg/cross.svg";
+import sampleSize from "lodash.samplesize";
 
 export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -162,6 +164,13 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   return (
     <>
       {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
+      {showKingEmote && (
+        <audio
+          src={setKingEmoteSound(score, gameOver, gameStartState)}
+          autoPlay={true}
+        ></audio>
+      )}
+
       <div
         className="game-page"
         ref={gamePageRef}
@@ -173,7 +182,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
         {!isMobileView && (
           <div className="king-div">
             <img
-              src={setKingEmote(score, bestScore, gameOver, gameStartState)}
+              src={setKingEmote(score, gameOver, gameStartState)}
               alt="King's emote"
               className={showKingEmote ? "king-emote visible" : "king-emote"}
             />
@@ -269,12 +278,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
                 </div>
                 <div className="king-div">
                   <img
-                    src={setKingEmote(
-                      score,
-                      bestScore,
-                      gameOver,
-                      gameStartState
-                    )}
+                    src={setKingEmote(score, gameOver, gameStartState)}
                     alt="King's emote"
                     className={
                       showKingEmote ? "king-emote visible" : "king-emote"
