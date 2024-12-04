@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import useSound from "use-sound";
 import { Card } from "./Card";
 import { getRandomCards } from "../utils/arrayMethods";
 import "../styles/Game.css";
@@ -15,9 +14,8 @@ import exit from "../assets/svg/exit.svg";
 import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import cross from "../assets/svg/cross.svg";
-import sampleSize from "lodash.samplesize";
 import kingBookSound from "../assets/sounds/emote sounds/King-Book-Sound.mp3";
-import cardPlaceSound from "../assets/sounds/Card-Place-Sound.mp3";
+import cardsPlaceAudio from "../assets/sounds/Cards-Place-Audio.mp3";
 
 export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -108,14 +106,13 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
 
   // useEffect to update cards at the end of a round
   useEffect(() => {
-      setTimeout(() => {
-        (async () => {
-          const cardsArray = await allCards;
-          setCards(getRandomCards(cardsArray, 12));
-          setShowCard(true);
-          console.log(1);
-        })();
-      }, 500);
+    setTimeout(() => {
+      (async () => {
+        const cardsArray = await allCards;
+        setCards(getRandomCards(cardsArray, 12));
+        setShowCard(true);
+      })();
+    }, 500);
     setTimeout(() => setCardsFlipped(false), 750);
 
     setTimeout(() => {
@@ -176,9 +173,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       {showKingEmote && gameStartState && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
       )}
-      {gameStartState && (
-        <audio src={cardPlaceSound} autoPlay={true} loop={true}></audio>
-      )}
+      {gameStartState && <audio src={cardsPlaceAudio} autoPlay={true}></audio>}
 
       <div
         className="game-page"
