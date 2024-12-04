@@ -16,6 +16,8 @@ import question from "../assets/svg/question.svg";
 import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import cross from "../assets/svg/cross.svg";
 import sampleSize from "lodash.samplesize";
+import kingBookSound from "../assets/sounds/emote sounds/King-Book-Sound.mp3";
+import cardPlaceSound from "../assets/sounds/Card-Place-Sound.mp3";
 
 export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -106,19 +108,20 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
 
   // useEffect to update cards at the end of a round
   useEffect(() => {
-    setTimeout(() => {
-      (async () => {
-        const cardsArray = await allCards;
-        setCards(getRandomCards(cardsArray, 12));
-        setShowCard(true);
-      })();
-    }, 500);
+      setTimeout(() => {
+        (async () => {
+          const cardsArray = await allCards;
+          setCards(getRandomCards(cardsArray, 12));
+          setShowCard(true);
+          console.log(1);
+        })();
+      }, 500);
     setTimeout(() => setCardsFlipped(false), 750);
 
     setTimeout(() => {
       if (!gameStartState) setShowKingEmote(false);
     }, 1000);
-  }, [selectedCards, gameStartState, allCards]);
+  }, [selectedCards, allCards]);
 
   // useEffect to update bestScore if new bestScore is obtained
   useEffect(() => {
@@ -164,11 +167,17 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   return (
     <>
       {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
-      {showKingEmote && (
+      {showKingEmote && !gameStartState && (
         <audio
           src={setKingEmoteSound(score, gameOver, gameStartState)}
           autoPlay={true}
         ></audio>
+      )}
+      {showKingEmote && gameStartState && (
+        <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
+      )}
+      {gameStartState && (
+        <audio src={cardPlaceSound} autoPlay={true} loop={true}></audio>
       )}
 
       <div

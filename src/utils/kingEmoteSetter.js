@@ -26,34 +26,8 @@ import kingMad2Sound from "../assets/sounds/emote sounds/King-Mad-2-Sound.mp3";
 import kingMad3Sound from "../assets/sounds/emote sounds/King-Mad-3-Sound.mp3";
 import kingMad4Sound from "../assets/sounds/emote sounds/King-Mad-4-Sound.mp3";
 
-// Sound Initializations
-// const [kingThumbsUp1Sound] = useSound(kingThumbsUp1Sound);
-// const [kingThumbsUp2Sound] = useSound(kingThumbsUp2Sound);
-// const [kingThumbsUp3Sound] = useSound(kingThumbsUp3Sound);
-// const [kingTenPointsSound] = useSound(kingTenPointsSound);
-// const [kingHappySound] = useSound(kingHappySound);
-// const [kingPixelLaughSound] = useSound(kingPixelLaughSound);
-// const [kingPirateSound] = useSound(kingPirateSound);
-// const [kingVictorySound] = useSound(kingVictorySound);
-// const [kingMad1Sound] = useSound(kingMad1Sound);
-// const [kingMad2Sound] = useSound(kingMad2Sound);
-// const [kingMad3Sound] = useSound(kingMad3Sound);
-// const [kingMad4Sound] = useSound(kingMad4Sound);
-
 function setKingEmote(score, gameOver, gameStartState) {
   let imgSrc;
-
-  const thumbsUpSounds = [
-    kingThumbsUp1Sound,
-    kingThumbsUp2Sound,
-    kingThumbsUp3Sound,
-  ];
-  const madSounds = [
-    kingMad1Sound,
-    kingMad2Sound,
-    kingMad3Sound,
-    kingMad4Sound,
-  ];
 
   if (gameStartState) {
     imgSrc = kingBook;
@@ -83,47 +57,32 @@ function setKingEmote(score, gameOver, gameStartState) {
 function setKingEmoteSound(score, gameOver, gameStartState) {
   let emoteSound;
 
-  const thumbsUpSounds = [
-    kingThumbsUp1Sound,
-    kingThumbsUp2Sound,
-    kingThumbsUp3Sound,
-  ];
-  const madSounds = [
-    kingMad1Sound,
-    kingMad2Sound,
-    kingMad3Sound,
-    kingMad4Sound,
-  ];
-
-  if (gameStartState) {
-  } else {
-    if (!gameOver) {
-      if (score < 5) {
-        emoteSound = kingThumbsUp2Sound;
-      } else if (score == 5) {
-        emoteSound = kingPixelLaughSound;
-      } else if (score > 5 && score < 10) {
-        emoteSound = kingThumbsUp1Sound;
-      } else if (score == 10) {
-        emoteSound = kingTenPointsSound;
-      } else if (score > 10 && score < 15) {
-        emoteSound = kingThumbsUp3Sound;
-      } else if (score == 15) {
-        emoteSound = kingPirateSound;
-      } else if (score > 15 && score < 20) {
-        emoteSound = kingThumbsUp2Sound;
-      } else if (score == 20) {
-        emoteSound = kingVictorySound;
-      } else if (score > 20 && score < 25) {
-        emoteSound = kingThumbsUp1Sound;
-      } else if (score == 25) {
-        emoteSound = kingHappySound;
-      } else {
-        emoteSound = kingThumbsUp3Sound;
-      }
+  if (!gameOver) {
+    if (score < 5) {
+      emoteSound = kingThumbsUp2Sound;
+    } else if (score == 5) {
+      emoteSound = kingPixelLaughSound;
+    } else if (score > 5 && score < 10) {
+      emoteSound = kingThumbsUp1Sound;
+    } else if (score == 10) {
+      emoteSound = kingTenPointsSound;
+    } else if (score > 10 && score < 15) {
+      emoteSound = kingThumbsUp3Sound;
+    } else if (score == 15) {
+      emoteSound = kingPirateSound;
+    } else if (score > 15 && score < 20) {
+      emoteSound = kingThumbsUp2Sound;
+    } else if (score == 20) {
+      emoteSound = kingVictorySound;
+    } else if (score > 20 && score < 25) {
+      emoteSound = kingThumbsUp1Sound;
+    } else if (score == 25) {
+      emoteSound = kingHappySound;
     } else {
-      emoteSound = kingMad1Sound;
+      emoteSound = kingThumbsUp3Sound;
     }
+  } else {
+    emoteSound = kingMad1Sound;
   }
 
   return emoteSound;
