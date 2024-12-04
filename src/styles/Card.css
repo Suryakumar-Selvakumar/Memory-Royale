@@ -5,7 +5,7 @@
   transform-style: preserve-3d;
   transition: all 500ms ease;
   position: relative;
-  --base-delay: 255ms;
+  --base-delay: 250ms;
   --base-column-offset: -275px;
   --base-row-offset: 550px;
   --card-width: 200px;
