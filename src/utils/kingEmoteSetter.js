@@ -57,15 +57,8 @@ function setKingEmote(score, gameOver, gameStartState) {
 function setKingEmoteSound(score, gameOver) {
   let emoteSound;
 
-  const thumbsUpSounds = [
-    kingThumbsUp1Sound,
-    kingThumbsUp2Sound,
-  ];
-  const madSounds = [
-    kingMad1Sound,
-    kingMad2Sound,
-    kingMad4Sound,
-  ];
+  const thumbsUpSounds = [kingThumbsUp1Sound, kingThumbsUp2Sound];
+  const madSounds = [kingMad1Sound, kingMad2Sound];
 
   if (!gameOver) {
     if (score == 4) {

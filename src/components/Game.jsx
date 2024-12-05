@@ -119,7 +119,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     }, 500);
     setTimeout(() => {
       setCardsFlipped(false);
-      !gameStartState && playCardSound();
+      !gameStartState && gameVolume && playCardSound();
     }, 750);
 
     setTimeout(() => {
@@ -166,23 +166,25 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       setScore((s) => s + 1);
       setCardsFlipped(true);
       setShowCard(false);
-      playCardSound();
+      gameVolume && playCardSound();
     }
   }
 
   return (
     <>
       {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
-      {showKingEmote && !gameStartState && !gameOver && (
+      {showKingEmote && !gameStartState && !gameOver && gameVolume && (
         <audio src={emoteSound} autoPlay={true}></audio>
       )}
-      {gameOver && (
+      {gameOver && gameVolume && (
         <audio src={setKingEmoteSound(score, gameOver)} autoPlay={true}></audio>
       )}
-      {showKingEmote && gameStartState && (
+      {showKingEmote && gameStartState && gameVolume && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
       )}
-      {gameStartState && <audio src={cardsPlaceAudio} autoPlay={true}></audio>}
+      {gameStartState && gameVolume && (
+        <audio src={cardsPlaceAudio} autoPlay={true}></audio>
+      )}
 
       <div
         className="game-page"
