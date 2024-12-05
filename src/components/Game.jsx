@@ -44,6 +44,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const [gameVolume, setGameVolume] = useState(
     storedGameVolume !== undefined ? storedGameVolume : true
   );
+  const [emoteSound, setEmoteSound] = useState(null);
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -130,6 +131,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   // Function to run when the user clicks on the card
   function handleCardClick(cardId) {
     setShowKingEmote(true);
+    setEmoteSound(setKingEmoteSound(score, gameOver));
 
     if (selectedCards.includes(cardId)) {
       setGameOver(true);
@@ -164,11 +166,11 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   return (
     <>
       {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
-      {showKingEmote && !gameStartState && (
-        <audio
-          src={setKingEmoteSound(score, gameOver, gameStartState)}
-          autoPlay={true}
-        ></audio>
+      {showKingEmote && !gameStartState && !gameOver && (
+        <audio src={emoteSound} autoPlay={true}></audio>
+      )}
+      {gameOver && (
+        <audio src={setKingEmoteSound(score, gameOver)} autoPlay={true}></audio>
       )}
       {showKingEmote && gameStartState && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
