@@ -60,12 +60,10 @@ function setKingEmoteSound(score, gameOver) {
   const thumbsUpSounds = [
     kingThumbsUp1Sound,
     kingThumbsUp2Sound,
-    kingThumbsUp3Sound,
   ];
   const madSounds = [
     kingMad1Sound,
     kingMad2Sound,
-    kingMad3Sound,
     kingMad4Sound,
   ];
 

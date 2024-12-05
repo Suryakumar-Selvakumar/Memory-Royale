@@ -16,6 +16,8 @@ import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import cross from "../assets/svg/cross.svg";
 import kingBookSound from "../assets/sounds/emote sounds/King-Book-Sound.mp3";
 import cardsPlaceAudio from "../assets/sounds/Cards-Place-Audio.mp3";
+import cardClickSound from "../assets/sounds/Card-Click-Sound.mp3";
+import useSound from "use-sound";
 
 export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
   const storedBestScore = JSON.parse(localStorage.getItem("best-score"));
@@ -45,6 +47,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     storedGameVolume !== undefined ? storedGameVolume : true
   );
   const [emoteSound, setEmoteSound] = useState(null);
+  const [playCardSound] = useSound(cardClickSound, { volume: 0.35 });
 
   //Card states
   const [selectedCards, setSelectedCards] = useState([]);
@@ -114,7 +117,10 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
         setShowCard(true);
       })();
     }, 500);
-    setTimeout(() => setCardsFlipped(false), 750);
+    setTimeout(() => {
+      setCardsFlipped(false);
+      !gameStartState && playCardSound();
+    }, 750);
 
     setTimeout(() => {
       if (!gameStartState) setShowKingEmote(false);
@@ -160,6 +166,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       setScore((s) => s + 1);
       setCardsFlipped(true);
       setShowCard(false);
+      playCardSound();
     }
   }
 
@@ -175,9 +182,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       {showKingEmote && gameStartState && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
       )}
-      {gameStartState && (
-        <audio src={cardsPlaceAudio} autoPlay={true}></audio>
-      )}
+      {gameStartState && <audio src={cardsPlaceAudio} autoPlay={true}></audio>}
 
       <div
         className="game-page"
