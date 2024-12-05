@@ -161,7 +161,7 @@
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
     justify-content: center;
     padding: 1rem;
     color: white;
@@ -172,7 +172,7 @@
   }
 
   .score-board-div > p:last-child {
-    margin-right: 1.25rem;
+    margin-right: -1.25rem;
   }
 
   .cards {
@@ -307,7 +307,7 @@
     font-size: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
     justify-content: center;
     padding: 1rem;
     color: white;
@@ -318,7 +318,7 @@
   }
 
   .score-board-div > p:last-child {
-    margin-right: 1rem;
+    margin-right: -1rem;
   }
 
   .cards {
@@ -453,9 +453,9 @@
     font-size: 3.5rem;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 1.5rem;
     color: white;
     background-color: rgb(23, 23, 23, 0.8);
     border-radius: 15px;
@@ -464,7 +464,7 @@
   }
 
   .score-board-div > p:last-child {
-    margin-right: 1rem;
+    margin-right: -1.25rem;
   }
 
   .cards {
