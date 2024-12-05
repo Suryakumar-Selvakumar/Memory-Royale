@@ -16,6 +16,7 @@ import kingToolTip from "../assets/icons/King-Tool-Tip.png";
 import cross from "../assets/svg/cross.svg";
 import kingBookSound from "../assets/sounds/emote sounds/King-Book-Sound.mp3";
 import cardsPlaceAudio from "../assets/sounds/Cards-Place-Audio.mp3";
+import cardsPlaceAudioStart from "../assets/sounds/Cards-Place-Audio-Start.mp3";
 import cardClickSound from "../assets/sounds/Card-Click-Sound.mp3";
 import useSound from "use-sound";
 
@@ -47,6 +48,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     storedGameVolume !== undefined ? storedGameVolume : true
   );
   const [emoteSound, setEmoteSound] = useState(null);
+  const [gameStartAudio, setGameStartAudio] = useState(true);
   const [playCardSound] = useSound(cardClickSound, { volume: 0.35 });
 
   //Card states
@@ -86,6 +88,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     setTimeout(() => {
       setShowKingEmote(false);
       setGameStartState(false);
+      setGameStartAudio(false);
     }, 4000);
 
     const mediaQuery = window.matchMedia(
@@ -182,8 +185,11 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       {showKingEmote && gameStartState && gameVolume && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
       )}
-      {gameStartState && gameVolume && (
+      {gameStartState && gameVolume && !gameStartAudio && (
         <audio src={cardsPlaceAudio} autoPlay={true}></audio>
+      )}
+      {gameStartAudio && gameVolume && (
+        <audio src={cardsPlaceAudioStart} autoPlay={true}></audio>
       )}
 
       <div

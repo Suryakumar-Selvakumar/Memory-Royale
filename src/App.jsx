@@ -21,7 +21,7 @@ const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("intro");
+  const [currentPage, setCurrentPage] = useState("home");
   const [firstLoad, setFirstLoad] = useState(false);
   const [playBtnSound] = useSound(playSound);
   const [btnSound] = useSound(buttonSound);
