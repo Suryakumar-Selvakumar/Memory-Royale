@@ -87,8 +87,6 @@ function setKingEmoteSound(score, gameOver) {
     emoteSound = sampleSize(madSounds)[0];
   }
 
-  console.log(1);
-
   return emoteSound;
 }
 

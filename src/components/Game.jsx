@@ -73,7 +73,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
 
   // useEffect to fetch from the API
   useEffect(() => {
-    setTimeout(() => setShowKingEmote(true), 250);
+    setShowKingEmote(true);
 
     (async () => {
       const cardsArray = await allCards;
@@ -83,7 +83,7 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     setTimeout(() => {
       setShowKingEmote(false);
       setGameStartState(false);
-    }, 4250);
+    }, 4000);
 
     const mediaQuery = window.matchMedia(
       "(min-width: 360px) and (max-width: 1700px)"
@@ -175,7 +175,9 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       {showKingEmote && gameStartState && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
       )}
-      {gameStartState && <audio src={cardsPlaceAudio} autoPlay={true}></audio>}
+      {gameStartState && (
+        <audio src={cardsPlaceAudio} autoPlay={true}></audio>
+      )}
 
       <div
         className="game-page"

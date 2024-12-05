@@ -6,7 +6,6 @@ export function Card({
   cardsFlipped,
   showCard,
   gameStartState,
-  gameOver,
 }) {
 
   let cardShadow;
