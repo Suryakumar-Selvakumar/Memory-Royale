@@ -125,6 +125,9 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
       !gameStartState && gameVolume && playCardSound();
     }, 750);
 
+    const emoteSoundAudioTag = document.querySelector(".emote-sound");
+    if (emoteSoundAudioTag) emoteSoundAudioTag.volume = 0.8;
+
     setTimeout(() => {
       if (!gameStartState) setShowKingEmote(false);
     }, 1000);
@@ -177,10 +180,14 @@ export function Game({ allCards, setCurrentPage, gameMusic, btnSound }) {
     <>
       {gameSound && <audio src={gameMusic} loop={true} autoPlay={true}></audio>}
       {showKingEmote && !gameStartState && !gameOver && gameVolume && (
-        <audio src={emoteSound} autoPlay={true}></audio>
+        <audio src={emoteSound} autoPlay={true} className="emote-sound"></audio>
       )}
       {gameOver && gameVolume && (
-        <audio src={setKingEmoteSound(score, gameOver)} autoPlay={true}></audio>
+        <audio
+          src={setKingEmoteSound(score, gameOver)}
+          autoPlay={true}
+          className="emote-sound"
+        ></audio>
       )}
       {showKingEmote && gameStartState && gameVolume && (
         <audio src={kingBookSound} autoPlay={true} loop={true}></audio>
