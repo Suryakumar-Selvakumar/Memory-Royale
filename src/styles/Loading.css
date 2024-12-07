@@ -1,7 +1,7 @@
 .loading-page {
   display: flex;
   font-family: myFontBold;
-  min-height: 100dvh;
+  height: 100dvh;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;

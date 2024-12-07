@@ -227,7 +227,7 @@
     justify-content: space-between;
     overflow: hidden;
     align-items: center;
-    height: 100%;
+    height: 100dvh;
     padding-top: 10vh;
     --translate-height: 200px;
   }
@@ -426,7 +426,7 @@
     justify-content: space-between;
     overflow: hidden;
     align-items: center;
-    height: 100vh;
+    height: 100dvh;
     --translate-height: 275px;
   }
 

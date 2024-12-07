@@ -70,6 +70,11 @@
 }
 
 @media (min-width: 360px) and (max-width: 768px) {
+  .intro-page {
+    height: 100dvh;
+    width: 100%;
+  }
+
   .intro-logo {
     font-size: 5rem;
     padding: 2rem 4rem;
@@ -84,7 +89,4 @@
     gap: 0.1rem;
     font-size: 5.15rem;
   }
-}
-
-@media (min-width: 769px) and (max-width: 1700px) {
 }
