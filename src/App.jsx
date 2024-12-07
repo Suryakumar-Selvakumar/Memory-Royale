@@ -15,7 +15,8 @@ import homeMusic from "./assets/sounds/Home-Music.mp3";
 import buttonSound from "./assets/sounds/Button-Sound.mp3";
 import homeIntroSound from "./assets/sounds/Home-Intro-Sound.mp3";
 
-const apiToken = import.meta.env.VITE_API_KEY;
+const apiToken =
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU5NjgyNGQwLWFkMTktNDdiYy1hYWU4LTNhYTNlNzRjMzI1NSIsImlhdCI6MTczMTc4ODU4NCwic3ViIjoiZGV2ZWxvcGVyLzVmYTUyNjc4LWMxM2QtNjkwMC1hY2IxLWViNTU2OTM4YjgzZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0NS43OS4yMTguNzkiXSwidHlwZSI6ImNsaWVudCJ9XX0.LNRuMIMQmv4AeJhz5qK_UYGjxg5_QThUD073SZCYIE1K2isUlPBQ6s-1T5KlTYWMxUyyC5MmVBLauh5tcH1xwg";
 const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 
 const allCards = (async () => await fetchCards(apiUrl, apiToken))();
