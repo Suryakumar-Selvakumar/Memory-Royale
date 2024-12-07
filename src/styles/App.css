@@ -75,16 +75,22 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     width: 100%;
     background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
     overflow: visible;
   }
 
   #root {
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
+  }
+
+  html {
+    height: -webkit-fill-available;
   }
 }
 
