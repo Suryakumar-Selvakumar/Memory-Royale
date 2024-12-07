@@ -79,25 +79,23 @@ body {
     min-height: -webkit-fill-available;
     width: 100%;
     background-image: url("../assets/backgrounds/Game-Background-Mobile.png");
-    overflow: scroll;
+    overflow: visible;
   }
 
   #root {
     min-height: 100vh;
     min-height: -webkit-fill-available;
     display: flex;
-    overflow: scroll;
     flex-direction: column;
   }
 
   html {
     height: -webkit-fill-available;
-    overflow: scroll;
   }
 }
 
 @media (any-pointer: coarse) {
   body {
-    overflow: hidden;
+    overflow: scroll;
   }
 }
