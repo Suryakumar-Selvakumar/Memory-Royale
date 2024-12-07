@@ -76,7 +76,7 @@
   }
 
   .intro-logo {
-    font-size: 5rem;
+    font-size: 4rem;
     padding: 2rem 4rem;
     border-radius: 40%;
     opacity: 0;
@@ -87,6 +87,6 @@
     width: max-content;
     display: flex;
     gap: 0.1rem;
-    font-size: 5.15rem;
+    font-size: 4.15rem;
   }
 }

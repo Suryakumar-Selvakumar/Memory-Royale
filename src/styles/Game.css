@@ -258,6 +258,10 @@
     width: 35px;
   }
 
+  .game-page .app-svgs:last-child {
+    width: 38px;
+  }
+
   .tool-tip-game {
     position: absolute;
     transform: translateY(225px);

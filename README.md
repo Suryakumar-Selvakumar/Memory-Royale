@@ -5,6 +5,7 @@ From Cards to Clashes, Can you remember it all? A Clash Royale themed Memory Gam
 ## Domain
 https://memory-royale.vercel.app/
 
+## Preview
 <div align="center">
    <img width=auto height=auto src="./public/output.png" alt="Memory Royale Game">
 </div>
@@ -34,11 +35,11 @@ https://memory-royale.vercel.app/
 
 ## Credits
 
-This game is a **Personal Project** built with the aim to develop and showcase my Web-Development skills. It is not affiliated with, endorsed, sponsored, or specifically approved by Supercell. All game assets, including images, sounds, and other intellectual property, are the sole property of Supercell. For more information, please refer to [Supercell's Fan Content Policy](https://supercell.com/en/fan-content-policy/).
+This game is a **Personal Project** that was built with the aim to develop and showcase my Web-Development skills. It is not affiliated with, endorsed, sponsored, or specifically approved by Supercell. All game assets, including images, sounds, and other intellectual property, are the sole property of Supercell. For more information, please refer to [Supercell's Fan Content Policy](https://supercell.com/en/fan-content-policy/).
 
-## Audio
+## Audio Guidelines
 
-The audio from the app will not be heard until after a user interaction occurs. This is due to [Chrome's Audio Accessibility Guidelines](https://developer.chrome.com/blog/autoplay/). For a complete audio experience, please explore all pages of the game.
+The audio in the app at the start may be muted by default and none will be heard until after a user interaction occurs. This is due to [Chrome's Audio Accessibility Guidelines](https://developer.chrome.com/blog/autoplay/). For a complete audio experience, please unmute music and sounds using their respective buttons and explore all pages of the game.
 
 ## Project Plan
 
