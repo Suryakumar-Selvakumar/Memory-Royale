@@ -22,7 +22,7 @@ https://memory-royale.vercel.app/
 - 12 Cards per Round - Refreshed & Randomized
 - Accessible Audio - Mute Music and Sounds
 
-## Technologies Used
+## Technologies
 
 - HTML & CSS - Language
 - JavaScript - Language
