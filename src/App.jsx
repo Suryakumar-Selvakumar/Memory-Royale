@@ -24,7 +24,7 @@ const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 function App() {
   const [currentPage, setCurrentPage] = useState("intro");
   const [firstLoad, setFirstLoad] = useState(false);
-  const [playBtnSound] = useSound(playSound);
+  const [playBtnSound] = useSound(playSound, { volume: 0.75 });
   const [btnSound] = useSound(buttonSound);
 
   return (
