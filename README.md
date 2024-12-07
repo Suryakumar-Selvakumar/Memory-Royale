@@ -3,6 +3,7 @@
 From Cards to Clashes, Can you remember it all? A Clash Royale themed Memory Game to test your wits!
 
 ## Domain
+https://memory-royale.vercel.app/
 
 <div align="center">
    <img width=auto height=auto src="./public/output.png" alt="Memory Royale Game">
