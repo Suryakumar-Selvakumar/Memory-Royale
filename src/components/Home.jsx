@@ -35,6 +35,8 @@ export function Home({
 
   useEffect(() => {
     setTimeout(() => setShowAnimation(false), 1500);
+    const emoteSoundAudioTag = document.querySelector(".emote-sound");
+    if (emoteSoundAudioTag) emoteSoundAudioTag.volume = 0.75;
   }, []);
 
   // UseEffect to add gameSound to localStorage
@@ -70,7 +72,11 @@ export function Home({
         backgroundSize: !mediaQuery.matches && "cover",
       }}
     >
-      <audio src={homeIntroSound} autoPlay={true}></audio>
+      <audio
+        src={homeIntroSound}
+        autoPlay={true}
+        className="intro-sound"
+      ></audio>
       {gameSound && <audio src={homeMusic} loop={true} autoPlay={true}></audio>}
       <div
         className={showAnimation ? "logo-container start" : "logo-container"}
