@@ -1,13 +1,11 @@
 .loading-page {
   display: flex;
   font-family: myFontBold;
-  min-height: 100vh;
+  min-height: 100dvh;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
-  /* animation: screen-fade-in 1s ease;
-  transform-origin: center; */
   position: relative;
 }
 
@@ -50,7 +48,7 @@
   -webkit-text-stroke: 3px rgb(0, 0, 0);
   font-size: 3rem;
   position: relative;
-  bottom: -17.5px;
+  bottom: -25px;
   line-height: 1;
 }
 
@@ -58,7 +56,7 @@
   height: 3vh;
   background-color: black;
   border-top: 4px solid black;
-  width: 100vw;
+  width: 100dvw;
 }
 
 #loader {
@@ -80,15 +78,16 @@
   }
 
   100% {
-    width: 100%;
+    width: 100dvw;
   }
 }
 
 @media (min-width: 360px) and (max-width: 768px) {
   #progress {
-    text-shadow: 0 0 5px black;
-    -webkit-text-stroke: 2.5px rgb(0, 0, 0);
-    font-size: 2rem;
+    text-shadow: 0 0 3.5px black;
+    -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+    font-size: 1.5rem;
+    bottom: -15px;
   }
 
   .loading-page {
@@ -99,6 +98,13 @@
   .loading-page #crown-icon {
     position: relative;
     top: -0.35vh;
+  }
+
+  .loading-wrapper {
+    height: 3vh;
+    background-color: black;
+    border-top: 2.5px solid black;
+    width: 100dvw;
   }
 }
 

@@ -227,7 +227,7 @@
     justify-content: space-between;
     overflow: hidden;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     padding-top: 10vh;
     --translate-height: 200px;
   }
@@ -385,28 +385,29 @@
 
   .tool-tip {
     position: absolute;
-    transform: translateY(250px);
+    transform: translateY(225px);
     opacity: 0;
     transition: all 1s ease;
     right: 50px;
     bottom: 0;
+    z-index: 999;
   }
 
   .tool-tip.visible {
-    transform: translateY(80px);
+    transform: translateY(75px);
     opacity: 1;
   }
 
   .tool-tip p {
     color: white;
-    width: 200px;
+    width: 150px;
     background-color: rgb(0, 0, 0, 0.8);
     box-shadow: 0 0 10px rgb(161, 161, 161);
     padding: 0.5rem 0.25rem;
     border-radius: 15px;
     position: absolute;
     text-align: center;
-    right: 7rem;
+    right: 8.5rem;
     top: -1.5rem;
     font-size: 0.75rem;
   }
@@ -576,11 +577,13 @@
 
   .tool-tip {
     position: absolute;
-    transform: translateY(250px);
+    transform: translateY(390px);
     opacity: 0;
     transition: all 1s ease;
-    right: 75px;
+    right: 5rem;
     bottom: 0;
+    z-index: 999;
+    font-size: 1.5rem;
   }
 
   .tool-tip.visible {
@@ -590,20 +593,19 @@
 
   .tool-tip p {
     color: white;
-    width: 300px;
+    width: 350px;
     background-color: rgb(0, 0, 0, 0.8);
     box-shadow: 0 0 10px rgb(161, 161, 161);
-    padding: 0.5rem 0.25rem;
+    padding: 1rem 0.5rem;
     border-radius: 15px;
     position: absolute;
     text-align: center;
-    right: 14rem;
-    top: -2.5rem;
-    font-size: 1.25rem;
+    right: 17rem;
+    top: -3rem;
   }
 
   #king-tool-tip {
-    width: 250px;
+    width: 300px;
     transform: rotateY(180deg);
   }
 }
