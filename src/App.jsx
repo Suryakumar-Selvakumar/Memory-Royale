@@ -21,6 +21,14 @@ const apiUrl = "https://proxy.royaleapi.dev/v1/cards";
 
 const allCards = (async () => await fetchCards(apiUrl, apiToken))();
 
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+window.addEventListener("resize", () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
+
 function App() {
   const [currentPage, setCurrentPage] = useState("intro");
   const [firstLoad, setFirstLoad] = useState(false);
