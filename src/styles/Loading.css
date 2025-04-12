@@ -103,7 +103,7 @@
   .loading-wrapper {
     height: 2.5vh;
     background-color: black;
-    border-top: 2.5px solid black;
+    border-top: 2px solid black;
     width: 100dvw;
   }
 }
