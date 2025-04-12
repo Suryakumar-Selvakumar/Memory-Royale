@@ -248,11 +248,11 @@
     font-size: 2rem;
     line-height: 0.85;
     color: rgb(255, 255, 255);
-    text-shadow: 0 0 7.5px black;
+    text-shadow: 0 0 5px black;
     text-align: right;
     position: relative;
     left: 12.5px;
-    -webkit-text-stroke: 2px rgb(75, 75, 75);
+    -webkit-text-stroke: 1px rgb(75, 75, 75);
   }
 
   .logo:last-child {
