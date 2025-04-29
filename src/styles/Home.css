@@ -347,8 +347,8 @@
   }
 
   .btn-pushable span {
-    border-radius: 20px;
-    border-bottom: 7.5px solid rgb(201, 131, 0);
+    border-radius: 12.5px;
+    border-bottom: 5.5px solid rgb(201, 131, 0);
   }
 
   .btn-pushable span:active {
