@@ -1,14 +1,14 @@
-# Memory Royale
+<h1 align='center'>Memory Royale</h1>
 
-From Cards to Clashes, Can you remember it all? A Clash Royale themed Memory Game to test your wits!
+<div align="center">
+   <img width=auto height=auto src="./public/mobile-output.jpg" alt="output collage">
+</div>
+
+<div align='center'>From Cards to Clashes, Can you remember it all? A Clash Royale themed Memory Game to test your wits!</div>
 
 ## Domain
-https://memory-royale.vercel.app/
 
-## Preview
-<div align="center">
-   <img width=auto height=auto src="./public/output.png" alt="Memory Royale Game">
-</div>
+https://memory-royale.vercel.app/
 
 ## Features
 
@@ -24,14 +24,16 @@ https://memory-royale.vercel.app/
 
 ## Technologies
 
-- HTML & CSS - Language
-- JavaScript - Language
-- React - Library
-- Vite - Bundler
-- Vercel - Cloud Platform
-- LocalStorage - Browser API
-- Clash Royale API - Data Provider API
-- Royale API - Proxy API
+[![My Skills](https://skillicons.dev/icons?i=react,css,vite,vercel)](https://skillicons.dev)
+
+## Screenshots
+
+<div align="center">
+   <img width=auto height=auto src="./public/output-pc-1.png" alt="Intro">
+   <img width=auto height=auto src="./public/output-pc-2.png" alt="Home">
+   <img width=auto height=auto src="./public/output-pc-3.png" alt="Loading">
+   <img width=auto height=auto src="./public/output-pc-4.png" alt="Game">
+</div>
 
 ## Credits
 
